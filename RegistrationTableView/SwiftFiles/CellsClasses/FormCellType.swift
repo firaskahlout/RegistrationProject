@@ -23,9 +23,6 @@ enum FormCellType {
     
     var getIdentifier: String{
         switch self {
-        case .date: return "BirthCell"
-        case .country: return "CountryCell"
-        case .intrest: return "IntrestCell"
         case .gender: return "GenderCell"
         case .done: return "DoneCell"
         default: return "TextFieldCell"

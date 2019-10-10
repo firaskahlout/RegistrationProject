@@ -52,8 +52,6 @@ class BaseCell: UITableViewCell {
         }
         
         
-        
-        
     }
     
     @objc func doneDatePicker() {
