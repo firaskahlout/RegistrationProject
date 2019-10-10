@@ -10,7 +10,7 @@ import UIKit
 
 class BaseCell: UITableViewCell {
     
-    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet weak var femaleRadio: UIView!
     
@@ -42,7 +42,8 @@ class BaseCell: UITableViewCell {
     var type: FormCellType!
     var picker = UIPickerView()
     var datePicker = UIDatePicker()
-    
+//    private static var password = ""
+//     private static var confirmPassword = ""
     
     func display(title: String) {
         if type == .gender {
@@ -113,7 +114,6 @@ class BaseCell: UITableViewCell {
         //        RegistrationData().birthDate = strDate
         endEditing(true)
     }
- 
     
 }
 
@@ -121,7 +121,7 @@ extension BaseCell: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         item.value = textField.text
-        
+        titleLabel.textColor = .darkGray
     }
 }
 

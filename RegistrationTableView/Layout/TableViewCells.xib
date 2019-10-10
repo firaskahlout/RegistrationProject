@@ -21,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxp-D5-AX1">
                                 <rect key="frame" x="0.0" y="0.0" width="435" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BEt-vT-stu">
@@ -43,7 +43,7 @@
                 <outlet property="textField" destination="BEt-vT-stu" id="YOy-E8-Uax"/>
                 <outlet property="titleLabel" destination="Vxp-D5-AX1" id="F7s-kT-Ax2"/>
             </connections>
-            <point key="canvasLocation" x="-27" y="-5"/>
+            <point key="canvasLocation" x="-21" y="-7"/>
         </tableViewCell>
     </objects>
 </document>

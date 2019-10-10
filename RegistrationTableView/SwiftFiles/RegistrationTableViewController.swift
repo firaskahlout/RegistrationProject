@@ -11,16 +11,77 @@ import UIKit
 class RegistrationTableViewController: UIViewController {
     
     @IBOutlet weak var registrationTable: UITableView!
-    
+    private var password = ""
     @IBAction func doneClicked(_ sender: Any) {
-        for item in formItems {
-            print(item.value)
+        for item in 0..<formItems.count {
+            //print(item.value)
+            let cell = registrationTable.cellForRow(at: IndexPath(row: item, section: 0)) as! BaseCell
+            
+            switch formItems[item].type {
+            case .email:
+                if isValidEmail(emailStr: formItems[item].value!){
+                    cell.titleLabel.textColor = .green
+                }else {
+                    cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                }
+                print("1")
+            case .password:
+                if isValidPassword(password: formItems[item].value!){
+                    cell.titleLabel.textColor = .green
+                    password = formItems[item].value!
+                }else {
+                    cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                }
+                print("2")
+            case .confirmPass:
+                if isValidConfirmPassword(confirmPassword: formItems[item].value!){
+                    cell.titleLabel.textColor = .green
+                }else {
+                    cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                }
+                print("3")
+            case .intrest: return
+                print("4")
+            default:
+                if isValid(string: formItems[item].value!) {
+                    cell.titleLabel.textColor = .green
+                }else {
+                    cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                }
+                print("5")
+            }
+            
             
         }
-        let cell = registrationTable.cellForRow(at: IndexPath(row: 1, section: 0)) as! BaseCell
-        cell.textLabel?.backgroundColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+        
+    }
+    func isValidEmail(emailStr:String) -> Bool {
+
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: emailStr)
     }
     
+    func isValidPassword(password string: String) -> Bool {
+
+        let emailRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: string)
+    }
+    func isValidConfirmPassword(confirmPassword string: String) -> Bool {
+        if string == password , isValid(string: string) {
+            return true
+        }
+        return false
+    }
+    func isValid(string: String) -> Bool {
+        if string != "" {
+            return true
+        }
+        return false
+    }
     var formItems = [FormItem]()
     let cells: [FormCellType] = FormCellType.allCases
     
