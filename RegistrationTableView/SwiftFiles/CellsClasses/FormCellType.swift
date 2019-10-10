@@ -8,40 +8,27 @@
 
 import UIKit
 
-enum FormCellType {
-    
+enum FormCellType: String, CaseIterable {
     case name
     case email
     case password
-    case confirmPass
+    case confirmPass = "Confirm Password"
     case gender
     case date
     case country
     case intrest
-    case done
+   
     
     
     var getIdentifier: String{
         switch self {
         case .gender: return "GenderCell"
-        case .done: return "DoneCell"
         default: return "TextFieldCell"
         }
     }
     
-    
     var getTitle: String{
-        switch self {
-        case .name: return "Name"
-        case .email: return "Email"
-        case .date: return "Date"
-        case .country: return "Country"
-        case .intrest: return "Intrest"
-        case .gender: return "Gender"
-        case .password: return "Password"
-        case .confirmPass: return "Confirm Password"
-        case .done: return "Done"
-        }
+        return rawValue.capitalized
     }
     
     var placeholder: String{
@@ -72,7 +59,6 @@ enum FormCellType {
     
     var cellType: CellType{
         switch self {
-        case .done: return .button
         case .country, .date, .intrest: return .dropdown
         case .gender: return .select
         default: return .input

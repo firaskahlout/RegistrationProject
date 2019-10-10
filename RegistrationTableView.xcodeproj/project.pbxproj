@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1812A5B7234F445800B5180B /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812A5B6234F445800B5180B /* FormItem.swift */; };
 		1816DACF234CBF1B00C73851 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816DACE234CBF1B00C73851 /* RegistrationData.swift */; };
 		18727B52234DB17F0030EBFF /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727B51234DB17F0030EBFF /* CellType.swift */; };
 		18727B54234DD02C0030EBFF /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727B53234DD02C0030EBFF /* BaseCell.swift */; };
@@ -17,8 +18,6 @@
 		18A6FBE8234B1D6300D1D193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FBE6234B1D6300D1D193 /* Main.storyboard */; };
 		18A6FBEA234B1D6400D1D193 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FBE9234B1D6400D1D193 /* Assets.xcassets */; };
 		18A6FBED234B1D6400D1D193 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FBEB234B1D6400D1D193 /* LaunchScreen.storyboard */; };
-		18D10D19234B8671002FF767 /* DoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D10D17234B8671002FF767 /* DoneCell.swift */; };
-		18D10D1A234B8671002FF767 /* DoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D10D18234B8671002FF767 /* DoneCell.xib */; };
 		18DBE272234B2DB900EB1313 /* TableViewCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DBE271234B2DB900EB1313 /* TableViewCells.xib */; };
 		18DBE274234B34F400EB1313 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DBE273234B34F400EB1313 /* TextFieldCell.swift */; };
 		18FE25CC234B65BD006D8FC3 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE25CB234B65BD006D8FC3 /* GenderCell.swift */; };
@@ -26,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1812A5B6234F445800B5180B /* FormItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
 		1816DACE234CBF1B00C73851 /* RegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
 		18727B51234DB17F0030EBFF /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		18727B53234DD02C0030EBFF /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
@@ -38,8 +38,6 @@
 		18A6FBE9234B1D6400D1D193 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A6FBEC234B1D6400D1D193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18A6FBEE234B1D6400D1D193 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18D10D17234B8671002FF767 /* DoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneCell.swift; sourceTree = "<group>"; };
-		18D10D18234B8671002FF767 /* DoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoneCell.xib; sourceTree = "<group>"; };
 		18DBE271234B2DB900EB1313 /* TableViewCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCells.xib; sourceTree = "<group>"; };
 		18DBE273234B34F400EB1313 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		18FE25CB234B65BD006D8FC3 /* GenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				18A6FBE6234B1D6300D1D193 /* Main.storyboard */,
 				18DBE271234B2DB900EB1313 /* TableViewCells.xib */,
 				18FE25CD234B69EF006D8FC3 /* GenderCell.xib */,
-				18D10D18234B8671002FF767 /* DoneCell.xib */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -112,11 +109,11 @@
 			children = (
 				18DBE273234B34F400EB1313 /* TextFieldCell.swift */,
 				18FE25CB234B65BD006D8FC3 /* GenderCell.swift */,
-				18D10D17234B8671002FF767 /* DoneCell.swift */,
 				1816DACE234CBF1B00C73851 /* RegistrationData.swift */,
 				18727B51234DB17F0030EBFF /* CellType.swift */,
 				18727B57234DEF9F0030EBFF /* FormCellType.swift */,
 				18727B53234DD02C0030EBFF /* BaseCell.swift */,
+				1812A5B6234F445800B5180B /* FormItem.swift */,
 			);
 			path = CellsClasses;
 			sourceTree = "<group>";
@@ -182,7 +179,6 @@
 				18A6FBED234B1D6400D1D193 /* LaunchScreen.storyboard in Resources */,
 				18FE25CE234B69EF006D8FC3 /* GenderCell.xib in Resources */,
 				18DBE272234B2DB900EB1313 /* TableViewCells.xib in Resources */,
-				18D10D1A234B8671002FF767 /* DoneCell.xib in Resources */,
 				18A6FBEA234B1D6400D1D193 /* Assets.xcassets in Resources */,
 				18A6FBE8234B1D6300D1D193 /* Main.storyboard in Resources */,
 			);
@@ -199,8 +195,8 @@
 				18A6FBE5234B1D6300D1D193 /* RegistrationTableViewController.swift in Sources */,
 				18A6FBE1234B1D6300D1D193 /* AppDelegate.swift in Sources */,
 				18727B54234DD02C0030EBFF /* BaseCell.swift in Sources */,
-				18D10D19234B8671002FF767 /* DoneCell.swift in Sources */,
 				18FE25CC234B65BD006D8FC3 /* GenderCell.swift in Sources */,
+				1812A5B7234F445800B5180B /* FormItem.swift in Sources */,
 				18A6FBE3234B1D6300D1D193 /* SceneDelegate.swift in Sources */,
 				18727B58234DEF9F0030EBFF /* FormCellType.swift in Sources */,
 				1816DACF234CBF1B00C73851 /* RegistrationData.swift in Sources */,

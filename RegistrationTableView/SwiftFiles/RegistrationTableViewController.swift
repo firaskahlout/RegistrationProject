@@ -14,8 +14,8 @@ class RegistrationTableViewController: UIViewController {
     
     @IBOutlet weak var dataPickerView: UIPickerView!
     
-    let labelTexts = ["Name", "Email", "password", "confirm password"]
-    let cells: [FormCellType] = [FormCellType.name, FormCellType.email, FormCellType.password, FormCellType.confirmPass, FormCellType.gender, FormCellType.country, FormCellType.date, FormCellType.intrest, FormCellType.done]
+    var formItems = [FormItem]()
+    let cells: [FormCellType] = FormCellType.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +30,12 @@ class RegistrationTableViewController: UIViewController {
         registrationTable.register(UINib(nibName: "IntrestCell", bundle: nil), forCellReuseIdentifier: "IntrestCell")
         registrationTable.register(UINib(nibName: "DoneCell", bundle: nil), forCellReuseIdentifier: "DoneCell")
         
+        for item in cells {
+            formItems.append(FormItem(value: "", type: item))
+        }
         
     }
-
+    
 }
 
 extension RegistrationTableViewController: UITableViewDataSource, UITableViewDelegate {
@@ -46,15 +49,12 @@ extension RegistrationTableViewController: UITableViewDataSource, UITableViewDel
         
         let cell = registrationTable.dequeueReusableCell(withIdentifier: c.getIdentifier, for: indexPath) as! BaseCell
         cell.type = c
+        cell.item = formItems[indexPath.row]
         cell.display(title: c.getTitle)
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
-    
+   
     
 }
 

@@ -11,38 +11,11 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoneCell" rowHeight="105" id="HPa-5Y-1BS" customClass="DoneCell" customModule="RegistrationTableView" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="467" height="105"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HPa-5Y-1BS" id="5F8-hc-gRF">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HPa-5Y-1BS" id="5F8-hc-gRF">
                 <rect key="frame" x="0.0" y="0.0" width="467" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-IM-fUx">
-                        <rect key="frame" x="108.5" y="24" width="250" height="60"/>
-                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="60" id="biu-r1-Vqz"/>
-                            <constraint firstAttribute="width" constant="250" id="fv1-U9-zcE"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                        <state key="normal" title="Done">
-                            <color key="titleColor" red="0.92158097029999997" green="0.92154628039999997" blue="0.92156976459999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </state>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <action selector="doneClicked:" destination="HPa-5Y-1BS" eventType="touchUpInside" id="jwd-2K-ukm"/>
-                        </connections>
-                    </button>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="hWY-IM-fUx" firstAttribute="top" secondItem="5F8-hc-gRF" secondAttribute="top" constant="24" id="5RC-M6-Pfr"/>
-                    <constraint firstItem="hWY-IM-fUx" firstAttribute="centerX" secondItem="5F8-hc-gRF" secondAttribute="centerX" id="GAh-3U-mGj"/>
-                    <constraint firstAttribute="bottom" secondItem="hWY-IM-fUx" secondAttribute="bottom" constant="12" id="bVB-EK-51T"/>
-                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-196.37681159420291" y="26.450892857142858"/>
+            <point key="canvasLocation" x="-327" y="27"/>
         </tableViewCell>
     </objects>
 </document>

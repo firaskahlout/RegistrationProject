@@ -12,7 +12,6 @@ enum CellType{
     
     case input
     case dropdown
-    case button
     case select
     
     
@@ -20,7 +19,6 @@ enum CellType{
         switch self {
         case .input: return TextFieldCell.self
         case .dropdown: return TextFieldCell.self
-        case .button: return DoneCell.self
         case .select: return GenderCell.self
         }
     }

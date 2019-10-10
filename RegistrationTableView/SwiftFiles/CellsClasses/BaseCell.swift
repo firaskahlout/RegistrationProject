@@ -13,16 +13,20 @@ class BaseCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     
+    var item: FormItem!
     var type: FormCellType!
     var picker = UIPickerView()
     var datePicker = UIDatePicker()
+    
+    
     func display(title: String) {
-        if type.cellType != CellType.button , type.cellType != CellType.select {
+        
+        if type.cellType != CellType.select {
             titleLabel.text = type.getTitle
             textField.placeholder = type.placeholder
             textField.keyboardType = type.keyboardType
+            textField.delegate = self
         }
-        
         
         if type == FormCellType.country || type == FormCellType.intrest {
             picker.delegate = self
@@ -51,7 +55,6 @@ class BaseCell: UITableViewCell {
             
         }
         
-        
     }
     
     @objc func doneDatePicker() {
@@ -68,6 +71,15 @@ class BaseCell: UITableViewCell {
         endEditing(true)
     }
     
+}
+
+extension BaseCell: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        item.value = textField.text
+        print(textField.text)
+    }
+
 }
 
 extension BaseCell: UIPickerViewDelegate, UIPickerViewDataSource {
