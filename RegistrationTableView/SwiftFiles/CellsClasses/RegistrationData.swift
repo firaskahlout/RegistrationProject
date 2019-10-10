@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class RegistrationData {
+    
+    var name = ""
+    var email = ""
+    var password = ""
+    var confirmPassword = ""
+    var gender = ""
+    var birthDate = ""
+    var country = ""
+    var intrest = ""
+    
+    
+}

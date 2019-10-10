@@ -8,13 +8,6 @@
 
 import UIKit
 
-class TextFieldCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var titleLbl: UILabel!
-    
-    @IBOutlet weak var textField: UITextField!
-    
-    
+class TextFieldCell: BaseCell {
     
 }

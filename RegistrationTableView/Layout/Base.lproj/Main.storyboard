@@ -3,55 +3,58 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Registration page-->
-        <scene sceneID="IRs-Hv-hBc">
-            <objects>
-                <tableViewController id="wqu-pg-QfS" customClass="RegistrationTableViewController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3mk-ES-bSm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="EqQ-BV-hqG">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EqQ-BV-hqG" id="NaE-Lw-cVx">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="wqu-pg-QfS" id="0GQ-7b-ms1"/>
-                            <outlet property="delegate" destination="wqu-pg-QfS" id="bth-F5-zhe"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Registration page" largeTitleDisplayMode="always" id="lx2-w2-Tcz"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="URt-54-nXu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1024.6376811594205" y="147.99107142857142"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JWJ-5K-Obt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="whD-Lz-jhE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EkN-UW-S93">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="EkN-UW-S93">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wqu-pg-QfS" kind="relationship" relationship="rootViewController" id="eV9-OQ-P2A"/>
+                        <segue destination="cjN-W2-uXM" kind="relationship" relationship="rootViewController" id="wqr-TR-cWy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Rc-t3-r5f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="114.49275362318842" y="147.99107142857142"/>
+        </scene>
+        <!--Registration page-->
+        <scene sceneID="UUo-zg-BSK">
+            <objects>
+                <viewController storyboardIdentifier="RegistrationTableViewController" id="cjN-W2-uXM" customClass="RegistrationTableViewController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ceg-K9-Jjv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vmp-v0-e0x">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Vmp-v0-e0x" firstAttribute="top" secondItem="QCR-4x-05s" secondAttribute="top" id="2HD-Th-wAz"/>
+                            <constraint firstItem="Vmp-v0-e0x" firstAttribute="leading" secondItem="QCR-4x-05s" secondAttribute="leading" id="9BA-al-vIM"/>
+                            <constraint firstItem="QCR-4x-05s" firstAttribute="trailing" secondItem="Vmp-v0-e0x" secondAttribute="trailing" id="evY-t3-aD3"/>
+                            <constraint firstItem="QCR-4x-05s" firstAttribute="bottom" secondItem="Vmp-v0-e0x" secondAttribute="bottom" id="mcj-0R-1Rw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QCR-4x-05s"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Registration page" id="GVF-tO-IBk"/>
+                    <connections>
+                        <outlet property="registrationTable" destination="Vmp-v0-e0x" id="Bnj-BK-qqp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GoY-Bb-Tcp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="969.56521739130437" y="147.99107142857142"/>
         </scene>
     </scenes>
 </document>

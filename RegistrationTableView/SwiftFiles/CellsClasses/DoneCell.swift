@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoneCell: UITableViewCell {
+class DoneCell: BaseCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,4 +21,6 @@ class DoneCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func doneClicked(_ sender: Any) {
+    }
 }
