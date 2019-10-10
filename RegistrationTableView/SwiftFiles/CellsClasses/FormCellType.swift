@@ -31,6 +31,13 @@ enum FormCellType: String, CaseIterable {
         return rawValue.capitalized
     }
     
+    var secureEntry: Bool{
+        switch self {
+        case .password, .confirmPass: return true
+        default: return false
+        }
+    }
+    
     var placeholder: String{
         switch self {
         case .name: return "Enter your name"

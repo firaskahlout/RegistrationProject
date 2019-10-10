@@ -12,7 +12,14 @@ class RegistrationTableViewController: UIViewController {
     
     @IBOutlet weak var registrationTable: UITableView!
     
-    @IBOutlet weak var dataPickerView: UIPickerView!
+    @IBAction func doneClicked(_ sender: Any) {
+        for item in formItems {
+            print(item.value)
+            
+        }
+        let cell = registrationTable.cellForRow(at: IndexPath(row: 1, section: 0)) as! BaseCell
+        cell.textLabel?.backgroundColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+    }
     
     var formItems = [FormItem]()
     let cells: [FormCellType] = FormCellType.allCases

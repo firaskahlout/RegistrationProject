@@ -12,6 +12,31 @@ class BaseCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
+    @IBOutlet weak var femaleRadio: UIView!
+    
+    @IBOutlet weak var maleRadio: UIView!
+    @IBOutlet weak var maleRadioSuperView: UIView!
+    @IBOutlet weak var femaleRadioSuperView: UIView!
+    
+    @IBAction func femaleClicked(_ sender: Any) {
+        maleRadio.backgroundColor = nil
+        femaleRadio.backgroundColor = .black
+        item.value = "Female"
+    }
+    
+    @IBAction func maleClicked(_ sender: Any) {
+        femaleRadio.backgroundColor = nil
+        maleRadio.backgroundColor = .black
+        item.value = "Male"
+    }
+    
+    
+    override func awakeFromNib() {
+        
+        
+        
+    }
+    
     
     var item: FormItem!
     var type: FormCellType!
@@ -20,11 +45,29 @@ class BaseCell: UITableViewCell {
     
     
     func display(title: String) {
+        if type == .gender {
+           
+            femaleRadioSuperView.layer.borderColor = UIColor.black.cgColor
+            femaleRadioSuperView.layer.borderWidth = 1.3
+            femaleRadioSuperView.layer.cornerRadius = femaleRadioSuperView.frame.width / 2
+            maleRadioSuperView.layer.borderColor = UIColor.black.cgColor
+            maleRadioSuperView.layer.borderWidth = 1.3
+            maleRadioSuperView.layer.cornerRadius = maleRadioSuperView.frame.width / 2
+            
+            
+            femaleRadio.layer.borderColor = UIColor.black.cgColor
+            maleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
+            
+            femaleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
+            femaleRadio.backgroundColor = .black
+            item.value = "Female"
+        }
         
         if type.cellType != CellType.select {
             titleLabel.text = type.getTitle
             textField.placeholder = type.placeholder
             textField.keyboardType = type.keyboardType
+            textField.isSecureTextEntry = type.secureEntry
             textField.delegate = self
         }
         
@@ -67,19 +110,19 @@ class BaseCell: UITableViewCell {
         
         print(strDate)
         textField.text = strDate
-//        RegistrationData().birthDate = strDate
+        //        RegistrationData().birthDate = strDate
         endEditing(true)
     }
+ 
     
 }
 
 extension BaseCell: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         item.value = textField.text
-        print(textField.text)
+        
     }
-
 }
 
 extension BaseCell: UIPickerViewDelegate, UIPickerViewDataSource {
