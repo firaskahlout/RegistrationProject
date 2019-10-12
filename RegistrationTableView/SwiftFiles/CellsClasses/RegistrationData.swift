@@ -6,10 +6,10 @@
 //  Copyright © 2019 Firas Alkahlout. All rights reserved.
 //
 
-import Foundation
 
 class RegistrationData {
     
+    // MARK: - VARIABLES
     var name = ""
     var email = ""
     var password = ""

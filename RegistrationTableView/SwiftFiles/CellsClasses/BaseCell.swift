@@ -36,6 +36,19 @@ class BaseCell: UITableViewCell {
     
    
     
+    func toolBarDoneButton(for textField: UITextField) {
+        //ToolBar
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        //done button & cancel button
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(doneDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([doneButton,spaceButton], animated: false)
+        
+        textField.inputAccessoryView = toolbar
+    }
+    
     func display(item: FormItem) {
         self.item = item
         type = item.type
@@ -69,7 +82,9 @@ class BaseCell: UITableViewCell {
             picker.delegate = self
             picker.dataSource = self
             textField.inputView = picker
+            toolBarDoneButton(for: textField)
         }
+        
         if type == FormCellType.date {
             let minDate = Date(timeIntervalSince1970: 12)
             let maxDate = Date(timeIntervalSinceNow: 12)
@@ -79,32 +94,24 @@ class BaseCell: UITableViewCell {
             datePicker.minimumDate = minDate
             datePicker.maximumDate = maxDate
             
-            //ToolBar
-            let toolbar = UIToolbar()
-            toolbar.sizeToFit()
-            
-            //done button & cancel button
-            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(doneDatePicker))
-            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-            toolbar.setItems([doneButton,spaceButton], animated: false)
-            
-            textField.inputAccessoryView = toolbar
+            toolBarDoneButton(for: textField)
             
         }
         
     }
     
     @objc func doneDatePicker() {
-        let dateFormatter = DateFormatter()
-        // Now we specify the display format, e.g. "27-08-2015
-        dateFormatter.dateFormat = "MM,dd,YYYY"
-        // Now we get the date from the UIDatePicker and convert it to a string
-        let strDate = dateFormatter.string(from: datePicker.date)
-        // add toolbar to textField
-        
-        print(strDate)
-        textField.text = strDate
-        //        RegistrationData().birthDate = strDate
+        if type == FormCellType.date {
+            let dateFormatter = DateFormatter()
+            // Now we specify the display format, e.g. "27-08-2015
+            dateFormatter.dateFormat = "MM,dd,YYYY"
+            // Now we get the date from the UIDatePicker and convert it to a string
+            let strDate = dateFormatter.string(from: datePicker.date)
+            // add toolbar to textField
+            
+            print(strDate)
+            textField.text = strDate
+        }
         endEditing(true)
     }
     
@@ -132,7 +139,6 @@ extension BaseCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         textField.text = type.pickerData[row]
-        endEditing(true)
     }
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 enum FormCellType: String, CaseIterable {
+    
     case name
     case email
     case password
