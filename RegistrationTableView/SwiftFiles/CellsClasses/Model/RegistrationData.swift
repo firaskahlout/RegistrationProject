@@ -7,7 +7,7 @@
 //
 
 
-class RegistrationData {
+final class RegistrationData {
     
     // MARK: - VARIABLES
     var name = ""
