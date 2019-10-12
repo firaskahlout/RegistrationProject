@@ -10,11 +10,16 @@ import Foundation
 
 class FormItem {
     
-    var value = ""
+    var value: String
     let type: FormCellType
     
     init(value: String, type: FormCellType) {
         self.type = type
         self.value = value
+    }
+    
+    init(type: FormCellType) {
+        self.type = type
+        self.value = ""
     }
 }

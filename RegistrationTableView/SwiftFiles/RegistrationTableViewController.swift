@@ -95,7 +95,7 @@ class RegistrationTableViewController: UIViewController {
         registrationTable.register(UINib(nibName: "GenderCell", bundle: nil), forCellReuseIdentifier: "GenderCell")
         
         for item in cells {
-            formItems.append(FormItem(value: "", type: item))
+            formItems.append(FormItem(type: item))
         }
         
     }
