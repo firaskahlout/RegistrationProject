@@ -19,22 +19,22 @@ class RegistrationTableViewController: UIViewController {
             
             switch formItems[item].type {
             case .email:
-                if isValidEmail(emailStr: formItems[item].value!){
+                if isValidEmail(emailStr: formItems[item].value){
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
                 }
                 print("1")
             case .password:
-                if isValidPassword(password: formItems[item].value!){
+                if isValidPassword(password: formItems[item].value){
                     cell.titleLabel.textColor = .green
-                    password = formItems[item].value!
+                    password = formItems[item].value
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
                 }
                 print("2")
             case .confirmPass:
-                if isValidConfirmPassword(confirmPassword: formItems[item].value!){
+                if isValidConfirmPassword(confirmPassword: formItems[item].value){
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
@@ -43,7 +43,7 @@ class RegistrationTableViewController: UIViewController {
             case .intrest: return
                 print("4")
             default:
-                if isValid(string: formItems[item].value!) {
+                if isValid(string: formItems[item].value) {
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
@@ -51,7 +51,7 @@ class RegistrationTableViewController: UIViewController {
                 print("5")
             }
             
-            
+            print(formItems[item].value)
         }
         
     }
@@ -93,10 +93,6 @@ class RegistrationTableViewController: UIViewController {
         
         registrationTable.register(UINib(nibName: "TableViewCells", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
         registrationTable.register(UINib(nibName: "GenderCell", bundle: nil), forCellReuseIdentifier: "GenderCell")
-        registrationTable.register(UINib(nibName: "CountryCell", bundle: nil), forCellReuseIdentifier: "CountryCell")
-        registrationTable.register(UINib(nibName: "BirthCell", bundle: nil), forCellReuseIdentifier: "BirthCell")
-        registrationTable.register(UINib(nibName: "IntrestCell", bundle: nil), forCellReuseIdentifier: "IntrestCell")
-        registrationTable.register(UINib(nibName: "DoneCell", bundle: nil), forCellReuseIdentifier: "DoneCell")
         
         for item in cells {
             formItems.append(FormItem(value: "", type: item))
@@ -113,12 +109,10 @@ extension RegistrationTableViewController: UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let c = cells[indexPath.row]
+        let obj = formItems[indexPath.row].type
         
-        let cell = registrationTable.dequeueReusableCell(withIdentifier: c.getIdentifier, for: indexPath) as! BaseCell
-        cell.type = c
-        cell.item = formItems[indexPath.row]
-        cell.display(title: c.getTitle)
+        let cell = registrationTable.dequeueReusableCell(withIdentifier: obj.getIdentifier, for: indexPath) as! BaseCell
+        cell.display(item: formItems[indexPath.row])
         
         return cell
     }

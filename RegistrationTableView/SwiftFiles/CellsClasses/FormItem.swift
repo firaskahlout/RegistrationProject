@@ -10,7 +10,7 @@ import Foundation
 
 class FormItem {
     
-    var value: String?
+    var value = ""
     let type: FormCellType
     
     init(value: String, type: FormCellType) {

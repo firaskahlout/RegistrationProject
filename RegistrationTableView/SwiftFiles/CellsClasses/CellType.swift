@@ -1,11 +1,9 @@
-
-
-
-
-
-
-
-
+//  CellType.swift
+//  RegistrationTableView
+//
+//  Created by IFone on 10/9/19.
+//  Copyright © 2019 Firas Alkahlout. All rights reserved.
+//
 import UIKit
 
 enum CellType{
@@ -14,12 +12,4 @@ enum CellType{
     case dropdown
     case select
     
-    
-    var getClass: BaseCell.Type{
-        switch self {
-        case .input: return TextFieldCell.self
-        case .dropdown: return TextFieldCell.self
-        case .select: return GenderCell.self
-        }
-    }
 }

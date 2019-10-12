@@ -19,8 +19,6 @@
 		18A6FBEA234B1D6400D1D193 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FBE9234B1D6400D1D193 /* Assets.xcassets */; };
 		18A6FBED234B1D6400D1D193 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FBEB234B1D6400D1D193 /* LaunchScreen.storyboard */; };
 		18DBE272234B2DB900EB1313 /* TableViewCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DBE271234B2DB900EB1313 /* TableViewCells.xib */; };
-		18DBE274234B34F400EB1313 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DBE273234B34F400EB1313 /* TextFieldCell.swift */; };
-		18FE25CC234B65BD006D8FC3 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE25CB234B65BD006D8FC3 /* GenderCell.swift */; };
 		18FE25CE234B69EF006D8FC3 /* GenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FE25CD234B69EF006D8FC3 /* GenderCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -39,8 +37,6 @@
 		18A6FBEC234B1D6400D1D193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18A6FBEE234B1D6400D1D193 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18DBE271234B2DB900EB1313 /* TableViewCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCells.xib; sourceTree = "<group>"; };
-		18DBE273234B34F400EB1313 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		18FE25CB234B65BD006D8FC3 /* GenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
 		18FE25CD234B69EF006D8FC3 /* GenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,8 +103,6 @@
 		18FE25CA234B6570006D8FC3 /* CellsClasses */ = {
 			isa = PBXGroup;
 			children = (
-				18DBE273234B34F400EB1313 /* TextFieldCell.swift */,
-				18FE25CB234B65BD006D8FC3 /* GenderCell.swift */,
 				1816DACE234CBF1B00C73851 /* RegistrationData.swift */,
 				18727B51234DB17F0030EBFF /* CellType.swift */,
 				18727B57234DEF9F0030EBFF /* FormCellType.swift */,
@@ -195,12 +189,10 @@
 				18A6FBE5234B1D6300D1D193 /* RegistrationTableViewController.swift in Sources */,
 				18A6FBE1234B1D6300D1D193 /* AppDelegate.swift in Sources */,
 				18727B54234DD02C0030EBFF /* BaseCell.swift in Sources */,
-				18FE25CC234B65BD006D8FC3 /* GenderCell.swift in Sources */,
 				1812A5B7234F445800B5180B /* FormItem.swift in Sources */,
 				18A6FBE3234B1D6300D1D193 /* SceneDelegate.swift in Sources */,
 				18727B58234DEF9F0030EBFF /* FormCellType.swift in Sources */,
 				1816DACF234CBF1B00C73851 /* RegistrationData.swift in Sources */,
-				18DBE274234B34F400EB1313 /* TextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

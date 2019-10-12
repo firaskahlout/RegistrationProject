@@ -16,19 +16,17 @@ enum FormCellType: String, CaseIterable {
     case gender
     case date
     case country
-    case intrest
+    case intrest = "*Intrest"
    
-    
+    var getTitle: String{
+        return rawValue.capitalized
+    }
     
     var getIdentifier: String{
         switch self {
         case .gender: return "GenderCell"
         default: return "TextFieldCell"
         }
-    }
-    
-    var getTitle: String{
-        return rawValue.capitalized
     }
     
     var secureEntry: Bool{
@@ -57,6 +55,7 @@ enum FormCellType: String, CaseIterable {
         default: return []
         }
     }
+    
     var keyboardType: UIKeyboardType{
         switch self {
         case .email: return .emailAddress

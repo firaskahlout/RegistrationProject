@@ -13,10 +13,14 @@ class BaseCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet weak var femaleRadio: UIView!
-    
     @IBOutlet weak var maleRadio: UIView!
     @IBOutlet weak var maleRadioSuperView: UIView!
     @IBOutlet weak var femaleRadioSuperView: UIView!
+    
+    var item: FormItem!
+       var type: FormCellType!
+       var picker = UIPickerView()
+       var datePicker = UIDatePicker()
     
     @IBAction func femaleClicked(_ sender: Any) {
         maleRadio.backgroundColor = nil
@@ -30,22 +34,11 @@ class BaseCell: UITableViewCell {
         item.value = "Male"
     }
     
+   
     
-    override func awakeFromNib() {
-        
-        
-        
-    }
-    
-    
-    var item: FormItem!
-    var type: FormCellType!
-    var picker = UIPickerView()
-    var datePicker = UIDatePicker()
-//    private static var password = ""
-//     private static var confirmPassword = ""
-    
-    func display(title: String) {
+    func display(item: FormItem) {
+        self.item = item
+        type = item.type
         if type == .gender {
            
             femaleRadioSuperView.layer.borderColor = UIColor.black.cgColor
@@ -120,7 +113,7 @@ class BaseCell: UITableViewCell {
 extension BaseCell: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        item.value = textField.text
+        item.value = textField.text!
         titleLabel.textColor = .darkGray
     }
 }
