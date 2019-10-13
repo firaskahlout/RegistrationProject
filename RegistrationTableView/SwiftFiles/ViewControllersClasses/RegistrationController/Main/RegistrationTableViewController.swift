@@ -34,13 +34,13 @@ final class RegistrationTableViewController: UIViewController {
             
             switch formItems[item].type {
             case .email:
-                if isValidEmail(emailStr: formItems[item].value){
+                if Validator().isValidEmail(email: formItems[item].value){
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
                 }
             case .password:
-                if isValidPassword(password: formItems[item].value){
+                if Validator().isValidPassword(password: formItems[item].value){
                     cell.titleLabel.textColor = .green
                     password = formItems[item].value
                 }else {
@@ -54,7 +54,7 @@ final class RegistrationTableViewController: UIViewController {
                 }
             case .intrest: return
             default:
-                if isValid(string: formItems[item].value) {
+                if Validator().isValid(string: formItems[item].value) {
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
@@ -64,5 +64,4 @@ final class RegistrationTableViewController: UIViewController {
         }
         
     }
-    
 }
