@@ -29,6 +29,7 @@ final class RegistrationTableViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func doneClicked(_ sender: Any) {
+        var success = true
         for item in 0..<formItems.count {
             let cell = registrationTable.cellForRow(at: IndexPath(row: item, section: 0)) as! BaseCell
             
@@ -38,6 +39,7 @@ final class RegistrationTableViewController: UIViewController {
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                    success = false
                 }
             case .password:
                 if Validator().isValidPassword(password: formItems[item].value){
@@ -45,22 +47,28 @@ final class RegistrationTableViewController: UIViewController {
                     password = formItems[item].value
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                    success = false
                 }
             case .confirmPass:
                 if isValidConfirmPassword(confirmPassword: formItems[item].value){
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                    success = false
                 }
-            case .intrest: return
+            case .intrest: break
             default:
                 if Validator().isValid(string: formItems[item].value) {
                     cell.titleLabel.textColor = .green
                 }else {
                     cell.titleLabel.textColor = UIColor(red: 230/255, green: 125/255, blue: 115/255, alpha: 1)
+                    success = false
                 }
             }
-            print(formItems[item].value)
+        }
+        
+        if success {
+            presentUserDetailsView()
         }
         
     }

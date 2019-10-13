@@ -23,6 +23,13 @@ extension RegistrationTableViewController {
         }
         return false
     }
-
+    
+    func presentUserDetailsView() {
+        let userDetails = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UserDetailsController") as! UserDetailsController
+        let data = RegistrationData()
+        data.configData(items: formItems)
+        userDetails.userInformations = data
+        present(userDetails, animated: true, completion: nil)
+    }
 }
 

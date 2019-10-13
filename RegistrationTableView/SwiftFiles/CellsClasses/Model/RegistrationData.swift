@@ -19,5 +19,27 @@ final class RegistrationData {
     var country = ""
     var intrest = ""
     
+    func configData(items: [FormItem]) {
+        for item in 0..<items.count {
+            switch items[item].type {
+            case .name:
+                name = items[item].value
+            case .email:
+                email = items[item].value
+            case .password:
+                password = items[item].value
+            case .confirmPass:
+                confirmPassword = items[item].value
+            case .intrest:
+                intrest = items[item].value
+            case .country:
+                country = items[item].value
+            case .date:
+                birthDate = items[item].value
+            case .gender:
+                gender = items[item].value
+            }
+        }
+    }
     
 }

@@ -8,21 +8,30 @@
 
 import UIKit
 
-class UserDetailsController: UIViewController {
+final class UserDetailsController: UIViewController {
 
-    @IBOutlet weak var userName: UITextField!
+    // MARK: - Outlets
+    @IBOutlet weak private var userName: UITextField!
+    @IBOutlet weak private var email: UITextField!
+    @IBOutlet weak private var birthDate: UITextField!
+    @IBOutlet weak private var country: UITextField!
+    @IBOutlet weak private var intrest: UITextField!
+    @IBOutlet weak private var gender: UITextField!
     
-    @IBOutlet weak var email: UITextField!
+    //MARK: - Variables
+    var userInformations: RegistrationData!
     
-    @IBOutlet weak var birthDate: UITextField!
-    @IBOutlet weak var country: UITextField!
-    
-    @IBOutlet weak var intrest: UITextField!
-    @IBOutlet weak var gender: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+        userName.text = userInformations.name
+        email.text = userInformations.email
+        birthDate.text = userInformations.birthDate
+        country.text = userInformations.country
+        intrest.text = userInformations.intrest
+        gender.text = userInformations.gender
+        
     }
 
+    
 }

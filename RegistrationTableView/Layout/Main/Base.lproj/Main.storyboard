@@ -82,13 +82,14 @@
         <!--User Details Controller-->
         <scene sceneID="f0t-Uw-J4d">
             <objects>
-                <viewController id="okw-SB-5rj" customClass="UserDetailsController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserDetailsController" id="okw-SB-5rj" customClass="UserDetailsController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="85U-AC-gIU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="486-J0-Ot9">
-                                <rect key="frame" x="137" y="134" width="140" height="140"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="486-J0-Ot9">
+                                <rect key="frame" x="137" y="134.5" width="140" height="139"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="CpE-Lz-eHp"/>
                                     <constraint firstAttribute="height" constant="140" id="VAl-R3-Zz4"/>
@@ -217,5 +218,6 @@
         <image name="envelope.circle" catalog="system" width="64" height="60"/>
         <image name="mappin.circle" catalog="system" width="64" height="60"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
+        <image name="person.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
