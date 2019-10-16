@@ -38,9 +38,9 @@ final class RegistrationViewController: UIViewController {
         dataSource = ListDataSource(products: formItems)
         dataSource?.presentSearchCountryView = { [weak self] isSelected in
             guard isSelected else { return }
-            let searchView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SearchViewController")
-//            self!.show(searchView, sender: nil)
-            self!.present(searchView, animated: true, completion: nil)
+            let searchView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SearchViewController") as? SearchViewController
+            searchView?.isSelectedCountry = self
+            self?.present(searchView!, animated: true, completion: nil)
         }
     }
 
@@ -90,5 +90,13 @@ final class RegistrationViewController: UIViewController {
             presentUserDetailsView()
         }
         
+    }
+}
+
+extension RegistrationViewController: SearchCountryDelegate {
+    func selectedCountry(string: String) {
+        let country = formItems[6]
+        country.value = string
+        tableView.reloadData()
     }
 }

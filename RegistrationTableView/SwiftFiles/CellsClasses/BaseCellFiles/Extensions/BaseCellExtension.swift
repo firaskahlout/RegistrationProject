@@ -39,7 +39,9 @@ extension BaseCell {
                 textField.isSecureTextEntry = type.secureEntry
                 textField.delegate = self
             }
-            
+            if type == .country {
+                textField.text =  item.value
+            }
             if type == .intrest {
                 picker.delegate = self
                 picker.dataSource = self

@@ -7,14 +7,16 @@
 //
 
 import UIKit
-
+protocol SearchCountryDelegate {
+    func selectedCountry(string: String)
+}
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     typealias SenectedCountry = (String) -> Void
-    var isSenectedCountry: SenectedCountry?
+    var isSelectedCountry: SearchCountryDelegate?
     
     var selectedIndex = 0
     var items = CountryCell.name.pickerData
@@ -53,7 +55,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.cellForRow(at: IndexPath(row: selectedIndex, section: 0))?.accessoryType = .none
         selectedIndex = indexPath.row
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        isSenectedCountry!(filteredTableData[indexPath.row])
+        isSelectedCountry?.selectedCountry(string: filteredTableData[indexPath.row])
+        dismiss(animated: true, completion: nil)
     }
 }
 
