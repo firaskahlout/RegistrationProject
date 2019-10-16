@@ -9,7 +9,7 @@
 
 final class RegistrationData {
     
-    // MARK: - VARIABLES
+    // MARK: - Properties
     var name = ""
     var email = ""
     var password = ""
@@ -19,25 +19,27 @@ final class RegistrationData {
     var country = ""
     var intrest = ""
     
-    func configData(items: [FormItem]) {
+    func configData(items: [Item]) {
         for item in 0..<items.count {
             switch items[item].type {
-            case .name:
+            case FormCellType.name:
                 name = items[item].value
-            case .email:
+            case FormCellType.email:
                 email = items[item].value
-            case .password:
+            case FormCellType.password:
                 password = items[item].value
-            case .confirmPass:
+            case FormCellType.confirmPass:
                 confirmPassword = items[item].value
-            case .intrest:
+            case FormCellType.intrest:
                 intrest = items[item].value
-            case .country:
+            case FormCellType.country:
                 country = items[item].value
-            case .date:
+            case FormCellType.date:
                 birthDate = items[item].value
-            case .gender:
+            case FormCellType.gender:
                 gender = items[item].value
+            default:
+                return
             }
         }
     }

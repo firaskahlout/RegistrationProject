@@ -18,7 +18,7 @@ final class UserDetailsController: UIViewController {
     @IBOutlet weak private var intrest: UITextField!
     @IBOutlet weak private var gender: UITextField!
     
-    //MARK: - Variables
+    //MARK: - Properties
     var userInformations: RegistrationData!
     
     override func viewDidLoad() {

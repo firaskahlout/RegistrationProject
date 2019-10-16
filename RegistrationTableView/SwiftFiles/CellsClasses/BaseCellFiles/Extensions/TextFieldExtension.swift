@@ -9,9 +9,17 @@
 import UIKit
 // MARK: - TextField Extension
 extension BaseCell: UITextFieldDelegate {
-    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if type == .country {
+            countryFieldSelected!(true)
+        }
+        
+        return true
+    }
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        item.value = textField.text!
+        guard let text = textField.text else { return }
+        item.value = text
         titleLabel.textColor = .darkGray
     }
+    
 }

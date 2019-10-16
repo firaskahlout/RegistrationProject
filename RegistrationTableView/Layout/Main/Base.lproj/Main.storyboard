@@ -19,7 +19,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="cjN-W2-uXM" kind="relationship" relationship="rootViewController" id="wqr-TR-cWy"/>
+                        <segue destination="cjN-W2-uXM" kind="relationship" relationship="rootViewController" id="EZ5-Ae-GPZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Rc-t3-r5f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -29,7 +29,7 @@
         <!--Registration page-->
         <scene sceneID="UUo-zg-BSK">
             <objects>
-                <viewController storyboardIdentifier="RegistrationTableViewController" id="cjN-W2-uXM" customClass="RegistrationTableViewController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationTableViewController" id="cjN-W2-uXM" customClass="RegistrationViewController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceg-K9-Jjv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,12 +72,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Registration page" id="GVF-tO-IBk"/>
                     <connections>
-                        <outlet property="registrationTable" destination="Vmp-v0-e0x" id="Bnj-BK-qqp"/>
+                        <outlet property="tableView" destination="Vmp-v0-e0x" id="Bnj-BK-qqp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoY-Bb-Tcp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969.56521739130437" y="147.99107142857142"/>
+            <point key="canvasLocation" x="970" y="148"/>
         </scene>
         <!--User Details Controller-->
         <scene sceneID="f0t-Uw-J4d">
@@ -170,16 +170,16 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5rU-BN-YS2">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5rU-BN-YS2">
                                         <rect key="frame" x="0.0" y="152" width="366" height="24"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dfwenofwf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDB-DX-I51">
-                                                <rect key="frame" x="0.0" y="0.0" width="183" height="24"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nil" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDB-DX-I51">
+                                                <rect key="frame" x="0.0" y="0.0" width="179" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dfwenofwf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pPn-Sg-Yvf">
-                                                <rect key="frame" x="191" y="0.0" width="175" height="24"/>
+                                                <rect key="frame" x="187" y="0.0" width="179" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -210,7 +210,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbt-v6-hWm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1733.3333333333335" y="156.69642857142856"/>
+            <point key="canvasLocation" x="970" y="819"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="D8R-g6-24H">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="9WT-Mi-qFR" customClass="SearchViewController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ujw-e4-Fmy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I28-i8-sJG">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="X8y-k7-Rgn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="I28-i8-sJG" firstAttribute="leading" secondItem="aai-d4-Ftg" secondAttribute="leading" id="0De-Jl-bf9"/>
+                            <constraint firstItem="X8y-k7-Rgn" firstAttribute="leading" secondItem="aai-d4-Ftg" secondAttribute="leading" id="4tn-FF-59a"/>
+                            <constraint firstItem="aai-d4-Ftg" firstAttribute="bottom" secondItem="I28-i8-sJG" secondAttribute="bottom" id="9d9-Lk-bPG"/>
+                            <constraint firstItem="I28-i8-sJG" firstAttribute="top" secondItem="X8y-k7-Rgn" secondAttribute="bottom" id="HaN-xi-wvh"/>
+                            <constraint firstItem="aai-d4-Ftg" firstAttribute="trailing" secondItem="X8y-k7-Rgn" secondAttribute="trailing" id="He0-F3-gzZ"/>
+                            <constraint firstItem="aai-d4-Ftg" firstAttribute="trailing" secondItem="I28-i8-sJG" secondAttribute="trailing" id="Zop-Sh-NDu"/>
+                            <constraint firstItem="X8y-k7-Rgn" firstAttribute="top" secondItem="aai-d4-Ftg" secondAttribute="top" id="p0V-PK-Gzj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aai-d4-Ftg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="L9O-gc-QZh"/>
+                    <connections>
+                        <outlet property="searchBar" destination="X8y-k7-Rgn" id="sZV-PM-aLG"/>
+                        <outlet property="tableView" destination="I28-i8-sJG" id="BCh-z4-VhE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfX-CR-lsS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834.7826086956522" y="147.99107142857142"/>
         </scene>
     </scenes>
     <resources>

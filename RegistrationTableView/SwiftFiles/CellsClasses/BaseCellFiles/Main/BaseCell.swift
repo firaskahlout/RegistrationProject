@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class BaseCell: UITableViewCell {
+class BaseCell: UITableViewCell {
     
     //MARK: - OUTLETS
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,11 +18,12 @@ final class BaseCell: UITableViewCell {
     @IBOutlet weak var maleRadioSuperView: UIView!
     @IBOutlet weak var femaleRadioSuperView: UIView!
     
-    //MARK: - VARIABLES
-    var item: FormItem!
+    //MARK: - Properties
+    var item: Item!
     var type: FormCellType!
     var picker = UIPickerView()
     var datePicker = UIDatePicker()
+    var countryFieldSelected: ((Bool) -> Void)?
     
     //MARK: - ACTIONS
     @IBAction private func femaleClicked(_ sender: Any) {

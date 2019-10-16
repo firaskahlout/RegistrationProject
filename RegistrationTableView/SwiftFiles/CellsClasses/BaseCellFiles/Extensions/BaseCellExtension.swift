@@ -23,34 +23,37 @@ extension BaseCell {
         femaleRadio.backgroundColor = .black
     }
     
-    func display(item: FormItem) {
+    func display(item: Item) {
         self.item = item
-        type = item.type
-        
-        if type == .gender {
-            configGenderRadioButtons()
-            item.value = "Female"
-        }else if type.cellType != .select {
-            titleLabel.text = type.getTitle
-            textField.placeholder = type.placeholder
-            textField.keyboardType = type.keyboardType
-            textField.isSecureTextEntry = type.secureEntry
-            textField.delegate = self
-        }
-        
-        if type == .country || type == .intrest {
-            picker.delegate = self
-            picker.dataSource = self
-            textField.inputView = picker
-            toolBarDoneButton(for: textField)
-        }else if type == .date {
-            let minDate = Date(timeIntervalSince1970: 1)
-            let maxDate = Date(timeIntervalSinceNow: 1)
-            textField.inputView = datePicker
-            datePicker.datePickerMode = .date
-            datePicker.minimumDate = minDate
-            datePicker.maximumDate = maxDate
-            toolBarDoneButton(for: textField)
+        if let t = item.type as? FormCellType {
+            
+            type = t
+            
+            if type == .gender {
+                configGenderRadioButtons()
+                item.value = "Female"
+            }else if type.cellType != .select {
+                titleLabel.text = type.title
+                textField.placeholder = type.placeholder
+                textField.keyboardType = type.keyboardType
+                textField.isSecureTextEntry = type.secureEntry
+                textField.delegate = self
+            }
+            
+            if type == .intrest {
+                picker.delegate = self
+                picker.dataSource = self
+                textField.inputView = picker
+                toolBarDoneButton(for: textField)
+            }else if type == .date {
+                let minDate = Date(timeIntervalSince1970: 1)
+                let maxDate = Date(timeIntervalSinceNow: 1)
+                textField.inputView = datePicker
+                datePicker.datePickerMode = .date
+                datePicker.minimumDate = minDate
+                datePicker.maximumDate = maxDate
+                toolBarDoneButton(for: textField)
+            }
         }
         
     }
@@ -70,7 +73,7 @@ extension BaseCell {
         if type == FormCellType.date {
             let dateFormatter = DateFormatter()
             // Now we specify the display format, e.g. "27-08-2015
-            dateFormatter.dateFormat = "MM,dd,YYYY"
+            dateFormatter.dateFormat = "MMM dd , YYYY"
             // Now we get the date from the UIDatePicker and convert it to a string
             let date = dateFormatter.string(from: datePicker.date)
             textField.text = date

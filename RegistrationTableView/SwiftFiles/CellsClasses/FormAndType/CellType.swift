@@ -11,5 +11,6 @@ enum CellType{
     case input
     case dropdown
     case select
+    case read
     
 }

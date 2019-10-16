@@ -7,8 +7,51 @@
 //
 
 import UIKit
-
-enum FormCellType: String, CaseIterable {
+enum CountryCell: String, CaseIterable, FormCellProvider {
+    
+    case name
+    
+    var title: String{
+        return rawValue.capitalized
+    }
+    
+    var identifier: String{
+        return ""
+    }
+    
+    var secureEntry: Bool{
+        switch self {
+        case .name: return false
+        }
+    }
+    
+    var placeholder: String{
+        switch self {
+        case .name: return "Name"
+        }
+    }
+    
+    var pickerData: [String]{
+        switch self {
+        case .name: return ["Jordan", "Emarat", "America", "Mesh 3arf sho"]
+        }
+    }
+    
+    var keyboardType: UIKeyboardType{
+        switch self {
+        case .name: return .default
+        }
+    }
+    
+    var cellType: CellType{
+        switch self {
+        case .name: return .read
+        }
+    }
+    
+    
+}
+enum FormCellType: String, CaseIterable, FormCellProvider {
     
     case name
     case email
@@ -19,11 +62,11 @@ enum FormCellType: String, CaseIterable {
     case country
     case intrest = "*Intrest"
    
-    var getTitle: String{
+    var title: String{
         return rawValue.capitalized
     }
     
-    var getIdentifier: String{
+    var identifier: String{
         switch self {
         case .gender: return "GenderCell"
         default: return "TextFieldCell"
@@ -70,5 +113,5 @@ enum FormCellType: String, CaseIterable {
         case .gender: return .select
         default: return .input
         }
-    }
+    } 
 }

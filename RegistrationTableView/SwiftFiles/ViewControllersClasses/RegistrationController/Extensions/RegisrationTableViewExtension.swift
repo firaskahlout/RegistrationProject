@@ -8,17 +8,15 @@
 
 import UIKit
 
-extension RegistrationTableViewController {
+extension RegistrationViewController {
     
     func configRegistrationTableView() {
-        registrationTable.delegate = self
-        registrationTable.dataSource = self
-        registrationTable.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
-        registrationTable.register(UINib(nibName: "GenderCell", bundle: nil), forCellReuseIdentifier: "GenderCell")
+        tableView.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
+        tableView.register(UINib(nibName: "GenderCell", bundle: nil), forCellReuseIdentifier: "GenderCell")
     }
-
+    
     func isValidConfirmPassword(confirmPassword string: String) -> Bool {
-        if string == password , Validator().isValid(string: string) {
+        if string == password , !string.isEmpty {
             return true
         }
         return false
@@ -31,5 +29,6 @@ extension RegistrationTableViewController {
         userDetails.userInformations = data
         present(userDetails, animated: true, completion: nil)
     }
+    
 }
 
