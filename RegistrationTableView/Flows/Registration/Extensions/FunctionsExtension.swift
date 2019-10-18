@@ -10,13 +10,6 @@ import UIKit
 
 extension RegistrationViewController {
     
-    func isValidConfirmPassword(confirmPassword string: String) -> Bool {
-        if string == password.value , !string.isEmpty {
-            return true
-        }
-        return false
-    }
-    
     func presentUserDetailsView() {
         let userDetails = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UserDetailsController") as! UserDetailsController
         let data = RegistrationForm()

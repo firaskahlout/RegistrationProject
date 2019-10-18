@@ -26,6 +26,13 @@ class SearchViewController: UIViewController {
       }
     }
     
+    struct countryCell {
+        var country: String
+        var isSelected: Bool
+    }
+    
+    
+    var selectedCountry = ""
     var selectedIndex = 0
     var countries = ["Jordan", "Emarat", "America", "Mesh 3arf sho"]
     var filteredTableData: [String]!
@@ -39,6 +46,9 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
         
+        guard let index = countries.firstIndex(of: selectedCountry) else { return }
+        let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+        cell?.accessoryType = .checkmark
     }
     
     

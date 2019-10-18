@@ -64,6 +64,7 @@ private extension RegistrationViewController {
         guard isSelected else { return }
         let main = UIStoryboard(name: "Main", bundle: nil)
         let searchView = main.instantiateViewController(identifier: "SearchViewController") as? SearchViewController
+        searchView?.selectedCountry = country.value
         searchView?.isSelectedCountry = self
         present(searchView!, animated: true, completion: nil)
     }
@@ -78,25 +79,48 @@ private extension RegistrationViewController {
             let item = formItems[index]
             let value = item.value
             
-            if item == confirmPassword {
-                if item.value.isLike(string: password.value) {
-                    cell.titleLabel.textColor = .green
-                }else {
-                    cell.titleLabel.textColor = .lightRed
-                    success = false
-                }
-            }else {
+           
                 if value.isValid(item.validationType) {
+                    if item == confirmPassword {
+                        if value.isLike(string: password.value) , value.isValid(.password) {
+                            cell.titleLabel.textColor = .green
+                        }else{
+                            cell.titleLabel.textColor = .lightRed
+                            success = false
+                        }
+                        continue
+                    }
                     cell.titleLabel.textColor = .green
                 } else {
                     cell.titleLabel.textColor = .lightRed
                     success = false
                 }
-            }
+           
         }
         if success {
             presentUserDetailsView()
         }
          
      }
+}
+
+extension RegistrationViewController {
+    
+    func presentUserDetailsView() {
+        let userDetails = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UserDetailsController") as! UserDetailsController
+        let data = RegistrationForm()
+        data.configData(items: formItems)
+        userDetails.userInformations = data
+        present(userDetails, animated: true, completion: nil)
+    }
+    
+}
+
+
+extension RegistrationViewController: SearchCountryDelegate {
+    
+    func selectedCountry(string: String) {
+        country.value = string
+        tableView.reloadData()
+    }
 }

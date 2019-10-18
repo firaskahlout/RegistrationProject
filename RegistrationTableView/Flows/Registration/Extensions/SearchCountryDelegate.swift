@@ -11,7 +11,6 @@ import Foundation
 extension RegistrationViewController: SearchCountryDelegate {
     
     func selectedCountry(string: String) {
-        let country = formItems[6]
         country.value = string
         tableView.reloadData()
     }

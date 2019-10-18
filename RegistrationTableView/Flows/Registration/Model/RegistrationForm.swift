@@ -9,14 +9,15 @@
 
 final class RegistrationForm {
     
-    let nameItem1 = Item(type: RegistrationCell.name)
-    let nameItem2 = Item(type: RegistrationCell.name)
-    let nameItem3 = Item(type: RegistrationCell.name)
-    let nameItem4 = Item(type: RegistrationCell.name)
-    
-    var formItems: [Item] {
-        [nameItem1, nameItem2, nameItem3, nameItem4]
-    }
+//    let name = Item(type: RegistrationCell.name)
+//    let email = Item(type: RegistrationCell.email, validationType: .email)
+//    let password = Item(type: RegistrationCell.password, validationType: .password)
+//    let confirmPassword = Item(type: RegistrationCell.confirmPass)
+//    let gender = Item(type: RegistrationCell.gender)
+//    let date = Item(type: RegistrationCell.date)
+//    let country = Item(type: RegistrationCell.country)
+//    let intrest = Item(type: RegistrationCell.intrest)
+//    var formItems: [Item] { return [name, email, password, confirmPassword, gender, date, country, intrest] }
     
     // MARK: - Properties
     var name = ""
@@ -27,7 +28,7 @@ final class RegistrationForm {
     var birthDate = ""
     var country = ""
     var intrest = ""
-    
+
     func configData(items: [Item]) {
         for item in 0..<items.count {
             switch items[item].type {
