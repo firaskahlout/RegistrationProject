@@ -26,7 +26,7 @@ protocol FormCellProvider {
 
 }
 
-class Item {
+class Item: NSObject {
     
     var value: String
     let type: FormCellProvider

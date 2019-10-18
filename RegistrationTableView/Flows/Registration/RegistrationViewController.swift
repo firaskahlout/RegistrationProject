@@ -72,19 +72,28 @@ private extension RegistrationViewController {
         
         var success = true
         
-        for index in 0..<formItems.count {
+        for index in 0..<formItems.count-1 {
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.cellForRow(at: indexPath) as! BaseCell
             let item = formItems[index]
             let value = item.value
-            if value.isValid(item.validationType) {
-                cell.titleLabel.textColor = .green
-            } else {
-                cell.titleLabel.textColor = .lightRed
-                success = false
+            
+            if item == confirmPassword {
+                if item.value.isLike(string: password.value) {
+                    cell.titleLabel.textColor = .green
+                }else {
+                    cell.titleLabel.textColor = .lightRed
+                    success = false
+                }
+            }else {
+                if value.isValid(item.validationType) {
+                    cell.titleLabel.textColor = .green
+                } else {
+                    cell.titleLabel.textColor = .lightRed
+                    success = false
+                }
             }
         }
-        
         if success {
             presentUserDetailsView()
         }

@@ -15,5 +15,9 @@ import Foundation
         }
          return NSPredicate(format:"SELF MATCHES %@", pattern.rawValue).evaluate(with: self)
      }
+    
+    func isLike(string: String) -> Bool {
+        return self == string
+    }
  }
 
