@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     typealias SenectedCountry = (String) -> Void
-    var isSelectedCountry: SearchCountryDelegate?
+    var delegate: SearchCountryDelegate?
     var dataSource: ListDataSource? {
       didSet {
         tableView.dataSource = dataSource
@@ -61,7 +61,7 @@ extension SearchViewController: UITableViewDelegate {
         tableView.cellForRow(at: IndexPath(row: selectedIndex, section: 0))?.accessoryType = .none
         selectedIndex = indexPath.row
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        isSelectedCountry?.selectedCountry(string: filteredTableData[indexPath.row])
+        delegate?.selectedCountry(string: filteredTableData[indexPath.row])
         dismiss(animated: true, completion: nil)
     }
 }

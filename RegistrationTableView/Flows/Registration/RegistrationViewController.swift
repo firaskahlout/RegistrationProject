@@ -62,10 +62,10 @@ private extension RegistrationViewController {
 private extension RegistrationViewController {
     func displaySearch(_ isSelected: Bool) {
         guard isSelected else { return }
-        let main = UIStoryboard(name: "Main", bundle: nil)
+        let main = UIStoryboard(name: "SearchViewController", bundle: nil)
         let searchView = main.instantiateViewController(identifier: "SearchViewController") as? SearchViewController
         searchView?.selectedCountry = country.value
-        searchView?.isSelectedCountry = self
+        searchView?.delegate = self
         present(searchView!, animated: true, completion: nil)
     }
     
@@ -107,7 +107,7 @@ private extension RegistrationViewController {
 extension RegistrationViewController {
     
     func presentUserDetailsView() {
-        let userDetails = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UserDetailsController") as! UserDetailsController
+        let userDetails = UIStoryboard(name: "UserDetailsController", bundle: nil).instantiateViewController(withIdentifier: "UserDetailsController") as! UserDetailsController
         let data = RegistrationForm()
         data.configData(items: formItems)
         userDetails.userInformations = data

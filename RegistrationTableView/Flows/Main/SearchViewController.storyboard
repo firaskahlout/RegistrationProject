@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="yIe-wm-rYi">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="HXn-j4-yVy" customClass="SearchViewController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gb7-w5-OOw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xwp-3g-AgK">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-gV-l9u">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="18v-kc-i2k" firstAttribute="bottom" secondItem="Xwp-3g-AgK" secondAttribute="bottom" id="EXQ-5z-h9R"/>
+                            <constraint firstItem="18v-kc-i2k" firstAttribute="trailing" secondItem="Xwp-3g-AgK" secondAttribute="trailing" id="LtX-Ct-0nc"/>
+                            <constraint firstItem="Xwp-3g-AgK" firstAttribute="top" secondItem="V2s-gV-l9u" secondAttribute="bottom" id="Try-10-quv"/>
+                            <constraint firstItem="V2s-gV-l9u" firstAttribute="top" secondItem="18v-kc-i2k" secondAttribute="top" id="d1L-VR-KOQ"/>
+                            <constraint firstItem="Xwp-3g-AgK" firstAttribute="leading" secondItem="18v-kc-i2k" secondAttribute="leading" id="hRe-Zr-BIg"/>
+                            <constraint firstItem="18v-kc-i2k" firstAttribute="trailing" secondItem="V2s-gV-l9u" secondAttribute="trailing" id="rEN-qb-kCH"/>
+                            <constraint firstItem="V2s-gV-l9u" firstAttribute="leading" secondItem="18v-kc-i2k" secondAttribute="leading" id="rPg-h0-duT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="18v-kc-i2k"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UHo-vC-ZVo"/>
+                    <connections>
+                        <outlet property="searchBar" destination="V2s-gV-l9u" id="Jbb-Qd-pEv"/>
+                        <outlet property="tableView" destination="Xwp-3g-AgK" id="nf9-7n-0WR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="beB-nw-x3C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834.7826086956522" y="147.99107142857142"/>
+        </scene>
+    </scenes>
+</document>
