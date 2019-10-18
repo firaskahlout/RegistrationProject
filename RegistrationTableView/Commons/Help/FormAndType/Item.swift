@@ -30,9 +30,11 @@ class Item {
     
     var value: String
     let type: FormCellProvider
+    let validationType: RegEx
     
-    init(type: FormCellProvider, value: String = "") {
+    init(type: FormCellProvider, value: String = "", validationType: RegEx = .none) {
         self.type = type
         self.value = value
+        self.validationType = validationType
     }
 }

@@ -16,8 +16,14 @@ final class RegistrationViewController: UIViewController {
     // MARK: - Properties
     
     let name = Item(type: RegistrationCell.name)
-    var formItems: [Item] { return [name] }
-    var password = ""
+    let email = Item(type: RegistrationCell.email, validationType: .email)
+    let password = Item(type: RegistrationCell.password, validationType: .password)
+    let confirmPassword = Item(type: RegistrationCell.confirmPass)
+    let gender = Item(type: RegistrationCell.gender)
+    let date = Item(type: RegistrationCell.date)
+    let country = Item(type: RegistrationCell.country)
+    let intrest = Item(type: RegistrationCell.intrest)
+    var formItems: [Item] { return [name, email, password, confirmPassword, gender, date, country, intrest] }
     
     var dataSource: ListDataSource? {
       didSet {
@@ -44,8 +50,9 @@ private extension RegistrationViewController {
     }
     
     func configureDataSource() {
-        let all = RegistrationCell.allCases + RegistrationCell.allCases
-        dataSource = ListDataSource(items: all.map { Item(type: $0)} )
+//        let all = RegistrationCell.allCases + RegistrationCell.allCases
+//        dataSource = ListDataSource(items: all.map { Item(type: $0)} )
+        dataSource = ListDataSource(items: formItems )
         dataSource?.presentSearchCountryView = { [weak self] in self?.displaySearch($0) }
     }
 }
@@ -63,58 +70,24 @@ private extension RegistrationViewController {
     
     @IBAction func doneClicked(_ sender: Any) {
         
-//        for item in formItems {
-//            if isValid(item.validationType) {
-//                //gg
-//            } else {
-//                ////
-//            }
-//        }
-        /*
-         var success = true
-         for index in 0..<formItems.count {
-             let indexPath = IndexPath(row: index, section: 0)
-             let cell = tableView.cellForRow(at: indexPath) as! BaseCell
-             let item = formItems[index]
-             
-             switch item.type {
-             case FormCellType.email:
-                 if item.value.isValid(.email) {
-                     cell.titleLabel.textColor = .green
-                 }else {
-                     cell.titleLabel.textColor = .lightRed
-                     success = false
-                 }
-             case FormCellType.password:
-                 if item.value.isValid(.password) {
-                     cell.titleLabel.textColor = .green
-                     password = item.value
-                 }else {
-                     cell.titleLabel.textColor = .lightRed
-                     success = false
-                 }
-             case FormCellType.confirmPass:
-                 if isValidConfirmPassword(confirmPassword: item.value){
-                     cell.titleLabel.textColor = .green
-                 }else {
-                     cell.titleLabel.textColor = .lightRed
-                     success = false
-                 }
-             case FormCellType.intrest: break
-             default:
-                 if !item.value.isEmpty {
-                     cell.titleLabel.textColor = .green
-                 }else {
-                     cell.titleLabel.textColor = .lightRed
-                     success = false
-                 }
-             }
-         }
-         
-         if success {
-             presentUserDetailsView()
-         }
-        */
+        var success = true
+        
+        for index in 0..<formItems.count {
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = tableView.cellForRow(at: indexPath) as! BaseCell
+            let item = formItems[index]
+            let value = item.value
+            if value.isValid(item.validationType) {
+                cell.titleLabel.textColor = .green
+            } else {
+                cell.titleLabel.textColor = .lightRed
+                success = false
+            }
+        }
+        
+        if success {
+            presentUserDetailsView()
+        }
          
      }
 }

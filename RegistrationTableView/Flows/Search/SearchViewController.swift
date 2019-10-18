@@ -32,51 +32,36 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.delegate = self
         filteredTableData = countries
         dataSource = ListDataSource(cells: filteredTableData)
 
-        searchBar.showsCancelButton = true
         searchBar.delegate = self
-        
     }
     
     
 }
 
-//extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        
-//        return filteredTableData.count
-//       
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell()
-//        
-//        cell.textLabel?.text = filteredTableData[indexPath.row]
-//        
-//        return cell
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        tableView.cellForRow(at: IndexPath(row: selectedIndex, section: 0))?.accessoryType = .none
-//        selectedIndex = indexPath.row
-//        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//        isSelectedCountry?.selectedCountry(string: filteredTableData[indexPath.row])
-//        dismiss(animated: true, completion: nil)
-//    }
-//}
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: IndexPath(row: selectedIndex, section: 0))?.accessoryType = .none
+        selectedIndex = indexPath.row
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        isSelectedCountry?.selectedCountry(string: filteredTableData[indexPath.row])
+        dismiss(animated: true, completion: nil)
+    }
+}
 
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = searchText.isEmpty ? countries : countries.filter { (item: String) -> Bool in
+        filteredTableData = searchText.isEmpty ? countries: countries.filter { (item: String) -> Bool in
             // If dataItem matches the searchText, return true to include it
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-        tableView.reloadData()
+        dataSource = ListDataSource(cells: filteredTableData)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
