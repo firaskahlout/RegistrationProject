@@ -37,6 +37,8 @@ class SearchViewController: UIViewController {
         dataSource = ListDataSource(cells: filteredTableData)
 
         searchBar.delegate = self
+        searchBar.becomeFirstResponder()
+        
     }
     
     
