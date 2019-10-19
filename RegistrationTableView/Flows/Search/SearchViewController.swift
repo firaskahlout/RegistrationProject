@@ -34,21 +34,25 @@ class SearchViewController: UIViewController {
     
     var selectedCountry = ""
     var selectedIndex = 0
-    var countries = ["Jordan", "Emarat", "America", "Mesh 3arf sho"]
-    var filteredTableData: [String]!
+    var countries = [CountryCellForm(country: "Jordan"), CountryCellForm(country: "Emarat"),  CountryCellForm(country: "America"),  CountryCellForm(country: "Mesh 3arf sho")]
+    var filteredTableData: [CountryCellForm]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
-        filteredTableData = countries
-        dataSource = ListDataSource(cells: filteredTableData)
-
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
         
-        guard let index = countries.firstIndex(of: selectedCountry) else { return }
-        let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
-        cell?.accessoryType = .checkmark
+        for item in countries {
+            if item.country == selectedCountry {
+                item.isChecked = true
+                break
+            }
+        }
+        
+        filteredTableData = countries
+        dataSource = ListDataSource(cells: filteredTableData)
     }
     
     
@@ -61,20 +65,20 @@ extension SearchViewController: UITableViewDelegate {
         tableView.cellForRow(at: IndexPath(row: selectedIndex, section: 0))?.accessoryType = .none
         selectedIndex = indexPath.row
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        delegate?.selectedCountry(string: filteredTableData[indexPath.row])
+        delegate?.selectedCountry(string: filteredTableData[indexPath.row].country)
         dismiss(animated: true, completion: nil)
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = searchText.isEmpty ? countries: countries.filter { (item: String) -> Bool in
-            // If dataItem matches the searchText, return true to include it
-            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        dataSource = ListDataSource(cells: filteredTableData)
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        filteredTableData = searchText.isEmpty ? countries: countries.filter { (item: String) -> Bool in
+//            // If dataItem matches the searchText, return true to include it
+//            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+//        }
+//        dataSource = ListDataSource(cells: filteredTableData)
+//    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)

@@ -13,14 +13,14 @@ class ListDataSource: NSObject {
     var presentSearchCountryView: CountryHandler?
     
     let items: [Item]?
-    let cells: [String]?
+    let cells: [CountryCellForm]?
     
-    init(items: [Item] = []) {
+    init(items: [Item]) {
         self.items = items
         self.cells = nil
     }
     
-    init(cells: [String]) {
+    init(cells: [CountryCellForm]) {
         self.cells = cells
         self.items = nil
     }
@@ -49,7 +49,12 @@ extension ListDataSource: UITableViewDataSource {
         
         if items == nil {
             let cell = UITableViewCell()
-            cell.textLabel?.text = cells![indexPath.row]
+            cell.textLabel?.text = cells![indexPath.row].country
+            if cells![indexPath.row].isChecked {
+                cell.accessoryType = .checkmark
+            }else{
+                cell.accessoryType = .none
+            }
             return cell
         }else {
             let item = items![indexPath.row]
