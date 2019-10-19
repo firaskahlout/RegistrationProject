@@ -23,7 +23,15 @@ final class RegistrationViewController: UIViewController {
     let date = Item(type: RegistrationCell.date)
     let country = Item(type: RegistrationCell.country)
     let intrest = Item(type: RegistrationCell.intrest)
-    var formItems: [Item] { return [name, email, password, confirmPassword, gender, date, country, intrest] }
+    let name1 = Item(type: RegistrationCell.name)
+    let email1 = Item(type: RegistrationCell.email, validationType: .email)
+    let password1 = Item(type: RegistrationCell.password, validationType: .password)
+    let confirmPassword1 = Item(type: RegistrationCell.confirmPass)
+    let gender1 = Item(type: RegistrationCell.gender)
+    let date1 = Item(type: RegistrationCell.date)
+    let country1 = Item(type: RegistrationCell.country)
+    let intrest1 = Item(type: RegistrationCell.intrest)
+    var formItems: [Item] { return [name, email, password, confirmPassword, gender, date, country, intrest, name1, email1, password1, confirmPassword1, gender1, date1, country1, intrest1] }
     
     var dataSource: ListDataSource? {
       didSet {

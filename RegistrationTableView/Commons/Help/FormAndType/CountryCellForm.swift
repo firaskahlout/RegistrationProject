@@ -10,7 +10,7 @@ import Foundation
 
 class CountryCellForm: NSObject {
     var country: String
-    var isChecked : Bool
+    var isChecked: Bool
 
     init(country: String, isChecked: Bool = false) {
         self.country = country

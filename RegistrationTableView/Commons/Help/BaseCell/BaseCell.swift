@@ -59,7 +59,7 @@ extension BaseCell {
         femaleRadio.layer.borderColor = UIColor.black.cgColor
         maleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
         femaleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
-        femaleRadio.backgroundColor = .black
+//        femaleRadio.backgroundColor = .black
     }
     
     func display(item: Item) {
@@ -70,17 +70,29 @@ extension BaseCell {
             
             if type == .gender {
                 configGenderRadioButtons()
-                item.value = "Female"
-            }else if type.cellType != .select {
+                if item.value == "Male" {
+                    maleRadio.backgroundColor = .black
+                    femaleRadio.backgroundColor = nil
+                }else{
+                    maleRadio.backgroundColor = nil
+                    femaleRadio.backgroundColor = .black
+                    item.value = "Female"
+                }
+                
+            }else {
                 titleLabel.text = type.title
                 textField.placeholder = type.placeholder
                 textField.keyboardType = type.keyboardType
                 textField.isSecureTextEntry = type.secureEntry
+                textField.inputView = nil
+                textField.text = item.value
                 textField.delegate = self
             }
+            
             if type == .country {
                 textField.text =  item.value
             }
+            
             if type == .intrest {
                
                 dataSource = PickerDataSource(items: type.pickerData)
