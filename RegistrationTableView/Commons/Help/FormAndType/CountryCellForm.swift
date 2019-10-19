@@ -9,6 +9,7 @@
 import Foundation
 
 class CountryCellForm: NSObject {
+    
     var country: String
     var isChecked: Bool
 

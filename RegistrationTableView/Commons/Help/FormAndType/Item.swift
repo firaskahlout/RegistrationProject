@@ -8,24 +8,6 @@
 
 import UIKit
 
-protocol FormCellProvider {
-    
-    var title: String { get }
-    
-    var identifier: String { get }
-    
-    var secureEntry: Bool { get }
-    
-    var placeholder: String { get }
-    
-    var pickerData: [String] { get }
-    
-    var keyboardType: UIKeyboardType { get }
-    
-    var cellType: FormCellType { get }
-
-}
-
 class Item: NSObject {
     
     var value: String

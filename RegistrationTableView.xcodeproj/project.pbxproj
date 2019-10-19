@@ -10,6 +10,7 @@
 		1812A5B7234F445800B5180B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812A5B6234F445800B5180B /* Item.swift */; };
 		1816DACF234CBF1B00C73851 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816DACE234CBF1B00C73851 /* RegistrationForm.swift */; };
 		1859AAF9235B39AB00724972 /* CountryCellForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859AAF8235B39AB00724972 /* CountryCellForm.swift */; };
+		1859AAFC235B88C700724972 /* FormCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859AAFB235B88C700724972 /* FormCellProvider.swift */; };
 		1860C40D2358F710007010FD /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860C40C2358F710007010FD /* PickerDataSource.swift */; };
 		18727B52234DB17F0030EBFF /* FormCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727B51234DB17F0030EBFF /* FormCellType.swift */; };
 		18727B54234DD02C0030EBFF /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727B53234DD02C0030EBFF /* BaseCell.swift */; };
@@ -40,6 +41,7 @@
 		1812A5B6234F445800B5180B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1816DACE234CBF1B00C73851 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		1859AAF8235B39AB00724972 /* CountryCellForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellForm.swift; sourceTree = "<group>"; };
+		1859AAFB235B88C700724972 /* FormCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCellProvider.swift; sourceTree = "<group>"; };
 		1860C40C2358F710007010FD /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
 		18727B51234DB17F0030EBFF /* FormCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCellType.swift; sourceTree = "<group>"; };
 		18727B53234DD02C0030EBFF /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1859AAFA235B889200724972 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1859AAFB235B88C700724972 /* FormCellProvider.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		1889D9AD23525C1100A2FC06 /* BaseCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +161,7 @@
 		189556B423575AFA003A0AAC /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				1859AAFA235B889200724972 /* Protocols */,
 				1889D9AD23525C1100A2FC06 /* BaseCell */,
 				1889D9B723526A6F00A2FC06 /* FormAndType */,
 				18EA543B23533B1500279357 /* RegEx.swift */,
@@ -414,6 +425,7 @@
 				1812A5B7234F445800B5180B /* Item.swift in Sources */,
 				18A6FBE3234B1D6300D1D193 /* SceneDelegate.swift in Sources */,
 				18A39B6623549B6C00BDD599 /* ListDataSource.swift in Sources */,
+				1859AAFC235B88C700724972 /* FormCellProvider.swift in Sources */,
 				18ADF16223549F5E004A851D /* UITableView.swift in Sources */,
 				18727B58234DEF9F0030EBFF /* RegistrationCell.swift in Sources */,
 				1816DACF234CBF1B00C73851 /* RegistrationForm.swift in Sources */,

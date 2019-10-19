@@ -8,46 +8,65 @@
 
 import UIKit
 
-class BaseCell: UITableViewCell {
+final class BaseCell: UITableViewCell {
     
     //MARK: - OUTLETS
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var femaleRadio: UIView!
-    @IBOutlet weak var maleRadio: UIView!
-    @IBOutlet weak var maleRadioSuperView: UIView!
-    @IBOutlet weak var femaleRadioSuperView: UIView!
+    @IBOutlet weak private var textField: UITextField!
+    @IBOutlet weak private var femaleRadio: UIView!
+    @IBOutlet weak private var maleRadio: UIView!
+    @IBOutlet weak private var maleRadioSuperView: UIView!
+    @IBOutlet weak private var femaleRadioSuperView: UIView!
     
     //MARK: - Properties
-    var item: Item!
-    var type: RegistrationCell!
-    var picker = UIPickerView()
-    var datePicker = UIDatePicker()
+    private var item: Item!
+    private var type: RegistrationCell!
+    private var picker = UIPickerView()
+    private var datePicker = UIDatePicker()
     var countryFieldSelected: ((Bool) -> Void)?
-    var dataSource: PickerDataSource? {
-      didSet {
-        picker.dataSource = dataSource
-        picker.delegate = dataSource
-        picker.reloadAllComponents()
-      }
+    private var dataSource: PickerDataSource? {
+        didSet {
+            picker.dataSource = dataSource
+            picker.delegate = dataSource
+            picker.reloadAllComponents()
+        }
     }
     
     //MARK: - ACTIONS
     @IBAction private func femaleClicked(_ sender: Any) {
-        maleRadio.backgroundColor = nil
-        femaleRadio.backgroundColor = .black
-        item.value = "Female"
+        selectFemale()
     }
     
     @IBAction private func maleClicked(_ sender: Any) {
-        femaleRadio.backgroundColor = nil
-        maleRadio.backgroundColor = .black
-        item.value = "Male"
+        selectMale()
     }
     
+    //MARK: - Main Method
+    func display(item: Item) {
+        self.item = item
+        type = item.type as? RegistrationCell
+        
+        if type == .gender {
+            configGenderRadioButtons()
+            configGenderCell(item)
+        }else {
+            setUpTextFieldCell(item)
+        }
+
+        if type == .country {
+            textField.text =  item.value
+        }else if type == .intrest {
+            dataSource = PickerDataSource(items: type.pickerData)
+            textField.inputView = picker
+            toolBarDoneButton(for: textField)
+        }else if type == .date {
+            configDateField()
+        }
+    }
     
 }
 
+//MARK: - Configrations
 extension BaseCell {
     
     private func configGenderRadioButtons() {
@@ -60,56 +79,51 @@ extension BaseCell {
         femaleRadio.layer.borderColor = UIColor.black.cgColor
         maleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
         femaleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
-//        femaleRadio.backgroundColor = .black
     }
     
-    func display(item: Item) {
-        self.item = item
-        if let t = item.type as? RegistrationCell {
-            
-            type = t
-            
-            if type == .gender {
-                configGenderRadioButtons()
-                if item.value == "Male" {
-                    maleRadio.backgroundColor = .black
-                    femaleRadio.backgroundColor = nil
-                }else{
-                    maleRadio.backgroundColor = nil
-                    femaleRadio.backgroundColor = .black
-                    item.value = "Female"
-                }
-                
-            }else {
-                titleLabel.text = type.title
-                textField.placeholder = type.placeholder
-                textField.keyboardType = type.keyboardType
-                textField.isSecureTextEntry = type.secureEntry
-                textField.inputView = nil
-                textField.text = item.value
-                textField.delegate = self
-            }
-            
-            if type == .country {
-                textField.text =  item.value
-            }
-            
-            if type == .intrest {
-               
-                dataSource = PickerDataSource(items: type.pickerData)
-                textField.inputView = picker
-                toolBarDoneButton(for: textField)
-            }else if type == .date {
-                let minDate = Date(timeIntervalSince1970: 1)
-                let maxDate = Date(timeIntervalSinceNow: 1)
-                textField.inputView = datePicker
-                datePicker.datePickerMode = .date
-                datePicker.minimumDate = minDate
-                datePicker.maximumDate = maxDate
-                toolBarDoneButton(for: textField)
-            }
+    fileprivate func configGenderCell(_ item: Item) {
+        if item.value == "Male" {
+            selectMale()
+        }else{
+            selectFemale()
         }
-        
+    }
+    
+    fileprivate func configDateField() {
+           let minDate = Date(timeIntervalSince1970: 1)
+           let maxDate = Date(timeIntervalSinceNow: 1)
+           textField.inputView = datePicker
+           datePicker.datePickerMode = .date
+           datePicker.minimumDate = minDate
+           datePicker.maximumDate = maxDate
+           toolBarDoneButton(for: textField)
+       }
+    
+    fileprivate func setUpTextFieldCell(_ item: Item) {
+        titleLabel.text = type.title
+        textField.placeholder = type.placeholder
+        textField.keyboardType = type.keyboardType
+        textField.isSecureTextEntry = type.secureEntry
+        textField.inputView = nil
+        textField.text = item.value
+        textField.delegate = self
+    }
+    
+}
+
+//MARK: - Helpful Functions
+extension BaseCell {
+    
+    fileprivate func selectFemale() {
+        maleRadio.backgroundColor = nil
+        femaleRadio.backgroundColor = .black
+        item.value = "Female"
+    }
+    
+    fileprivate func selectMale() {
+        femaleRadio.backgroundColor = nil
+        maleRadio.backgroundColor = .black
+        item.value = "Male"
     }
     
     private func toolBarDoneButton(for textField: UITextField) {
@@ -126,9 +140,7 @@ extension BaseCell {
     @objc private func doneDatePicker() {
         if type == RegistrationCell.date {
             let dateFormatter = DateFormatter()
-            // Now we specify the display format, e.g. "27-08-2015
             dateFormatter.dateFormat = DateFormat.MMMddYYYY.rawValue
-            // Now we get the date from the UIDatePicker and convert it to a string
             let date = dateFormatter.string(from: datePicker.date)
             textField.text = date
         }else {
@@ -136,10 +148,11 @@ extension BaseCell {
         }
         endEditing(true)
     }
-    
 }
 
 
+
+//MARK: - UITextFieldDelegate
 extension BaseCell: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
