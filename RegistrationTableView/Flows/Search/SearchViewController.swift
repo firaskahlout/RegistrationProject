@@ -33,7 +33,6 @@ class SearchViewController: UIViewController {
     
     
     var selectedCountry = ""
-    var selectedIndex = 0
     var countries = [CountryCellForm(country: "Jordan"), CountryCellForm(country: "Emarat"),  CountryCellForm(country: "America"),  CountryCellForm(country: "Mesh 3arf sho")]
     var filteredTableData: [CountryCellForm]!
     
@@ -44,9 +43,12 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
         
-        for item in countries {
-            if item.country == selectedCountry {
-                item.isChecked = true
+        for index in 0..<countries.count {
+            if countries[index].country == selectedCountry {
+                countries[index].isChecked = true
+                let x = countries[index]
+                countries[index] = countries[0]
+                countries[0] = x
                 break
             }
         }
@@ -62,9 +64,6 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.cellForRow(at: IndexPath(row: selectedIndex, section: 0))?.accessoryType = .none
-        selectedIndex = indexPath.row
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         delegate?.selectedCountry(string: filteredTableData[indexPath.row].country)
         dismiss(animated: true, completion: nil)
     }
