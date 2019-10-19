@@ -24,7 +24,7 @@ final class SearchViewController: UIViewController {
       }
     }
     var selectedCountry = ""
-    private var countries = [CountryCellForm(country: "Jordan"), CountryCellForm(country: "Emarat"),  CountryCellForm(country: "America"),  CountryCellForm(country: "Mesh 3arf sho")]
+    private var countries = [CountryCellForm]()
     private var filteredTableData: [CountryCellForm]!
     
     //MARK: - LifeCycle
@@ -60,6 +60,16 @@ extension SearchViewController {
         }
     }
     
+}
+
+extension SearchViewController {
+  
+    func setCountries(countries: [String]) {
+        for item in countries {
+            self.countries.append(CountryCellForm(country: item))
+        }
+    }
+  
 }
 
 //MARK: - TableViewDelegate

@@ -57,7 +57,9 @@ private extension RegistrationViewController {
         guard isSelected else { return }
         let main = UIStoryboard(name: "SearchViewController", bundle: nil)
         let searchView = main.instantiateViewController(identifier: "SearchViewController") as? SearchViewController
-        searchView?.selectedCountry = regForm.country.value
+        let country = regForm.country
+        searchView?.selectedCountry = country.value
+        searchView?.setCountries(countries: country.type.pickerData)
         searchView?.delegate = self
         present(searchView!, animated: true, completion: nil)
     }
