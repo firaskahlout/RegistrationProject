@@ -7,6 +7,18 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
-final class AppDelegate: UIResponder, UIApplicationDelegate { }
+final class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+
+    private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+
+      return true
+    }
+    
+}

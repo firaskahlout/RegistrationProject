@@ -6,5 +6,7 @@ target 'RegistrationTableView' do
   use_frameworks!
 
   # Pods for RegistrationTableView
-pod 'IQKeyboardManager'
+
+pod 'IQKeyboardManagerSwift'
+
 end
