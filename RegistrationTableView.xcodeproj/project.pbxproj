@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -154,8 +154,8 @@
 				1889D9AD23525C1100A2FC06 /* BaseCell */,
 				1889D9B723526A6F00A2FC06 /* FormAndType */,
 				18EA543B23533B1500279357 /* RegEx.swift */,
-				18A39B6523549B6C00BDD599 /* ListDataSource.swift */,
 				18D5FAF5235A4E8200BCCD5C /* DateFormat.swift */,
+				18A39B6523549B6C00BDD599 /* ListDataSource.swift */,
 				1860C40C2358F710007010FD /* PickerDataSource.swift */,
 			);
 			path = Help;
@@ -268,7 +268,6 @@
 				84FE0F60DAE2E063B74A3170 /* Pods-RegistrationTableView.debug.xcconfig */,
 				7BB35CAE57143260CBE2CEDF /* Pods-RegistrationTableView.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

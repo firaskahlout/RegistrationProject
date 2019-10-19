@@ -27,6 +27,7 @@ class BaseCell: UITableViewCell {
     var dataSource: PickerDataSource? {
       didSet {
         picker.dataSource = dataSource
+        picker.delegate = dataSource
         picker.reloadAllComponents()
       }
     }
@@ -97,7 +98,7 @@ extension BaseCell {
                
                 dataSource = PickerDataSource(items: type.pickerData)
                 textField.inputView = picker
-//                toolBarDoneButton(for: textField)
+                toolBarDoneButton(for: textField)
             }else if type == .date {
                 let minDate = Date(timeIntervalSince1970: 1)
                 let maxDate = Date(timeIntervalSinceNow: 1)
@@ -105,7 +106,7 @@ extension BaseCell {
                 datePicker.datePickerMode = .date
                 datePicker.minimumDate = minDate
                 datePicker.maximumDate = maxDate
-//                toolBarDoneButton(for: textField)
+                toolBarDoneButton(for: textField)
             }
         }
         

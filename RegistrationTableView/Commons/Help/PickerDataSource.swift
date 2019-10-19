@@ -10,9 +10,9 @@ import UIKit
 
 class PickerDataSource: NSObject {
     
-    let items: [String]?
+    let items: [String]
     
-    init(items: [String] = []) {
+    init(items: [String]) {
         self.items = items
     }
     
@@ -25,11 +25,11 @@ extension PickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return items!.count
+        return items.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return items![row]
+        return items[row]
     }
     
 }
