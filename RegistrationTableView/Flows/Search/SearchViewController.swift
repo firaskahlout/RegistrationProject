@@ -57,7 +57,6 @@ class SearchViewController: UIViewController {
         dataSource = ListDataSource(cells: filteredTableData)
     }
     
-    
 }
 
 extension SearchViewController: UITableViewDelegate {
