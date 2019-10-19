@@ -18,7 +18,7 @@ enum RegistrationCell: String, CaseIterable, FormCellProvider {
     case date
     case country
     case intrest = "*Intrest"
-   
+    
     var title: String{
         return rawValue.capitalized
     }

@@ -52,7 +52,7 @@ final class BaseCell: UITableViewCell {
         }else {
             setUpTextFieldCell(item)
         }
-
+        
         if type == .country {
             textField.text =  item.value
         }else if type == .intrest {
@@ -67,9 +67,9 @@ final class BaseCell: UITableViewCell {
 }
 
 //MARK: - Configrations
-extension BaseCell {
+private extension BaseCell {
     
-    private func configGenderRadioButtons() {
+    func configGenderRadioButtons() {
         femaleRadioSuperView.layer.borderColor = UIColor.black.cgColor
         femaleRadioSuperView.layer.borderWidth = 1.3
         femaleRadioSuperView.layer.cornerRadius = femaleRadioSuperView.frame.width / 2
@@ -81,7 +81,7 @@ extension BaseCell {
         femaleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
     }
     
-    fileprivate func configGenderCell(_ item: Item) {
+    func configGenderCell(_ item: Item) {
         if item.value == "Male" {
             selectMale()
         }else{
@@ -89,17 +89,17 @@ extension BaseCell {
         }
     }
     
-    fileprivate func configDateField() {
-           let minDate = Date(timeIntervalSince1970: 1)
-           let maxDate = Date(timeIntervalSinceNow: 1)
-           textField.inputView = datePicker
-           datePicker.datePickerMode = .date
-           datePicker.minimumDate = minDate
-           datePicker.maximumDate = maxDate
-           toolBarDoneButton(for: textField)
-       }
+    func configDateField() {
+        let minDate = Date(timeIntervalSince1970: 1)
+        let maxDate = Date(timeIntervalSinceNow: 1)
+        textField.inputView = datePicker
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = minDate
+        datePicker.maximumDate = maxDate
+        toolBarDoneButton(for: textField)
+    }
     
-    fileprivate func setUpTextFieldCell(_ item: Item) {
+    func setUpTextFieldCell(_ item: Item) {
         titleLabel.text = type.title
         textField.placeholder = type.placeholder
         textField.keyboardType = type.keyboardType
@@ -111,22 +111,22 @@ extension BaseCell {
     
 }
 
-//MARK: - Helpful Functions
-extension BaseCell {
+//MARK: - Actions
+private extension BaseCell {
     
-    fileprivate func selectFemale() {
+    func selectFemale() {
         maleRadio.backgroundColor = nil
         femaleRadio.backgroundColor = .black
         item.value = "Female"
     }
     
-    fileprivate func selectMale() {
+    func selectMale() {
         femaleRadio.backgroundColor = nil
         maleRadio.backgroundColor = .black
         item.value = "Male"
     }
     
-    private func toolBarDoneButton(for textField: UITextField) {
+    func toolBarDoneButton(for textField: UITextField) {
         //ToolBar
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -137,7 +137,7 @@ extension BaseCell {
         textField.inputAccessoryView = toolbar
     }
     
-    @objc private func doneDatePicker() {
+    @objc func doneDatePicker() {
         if type == RegistrationCell.date {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = DateFormat.MMMddYYYY.rawValue

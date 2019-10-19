@@ -14,52 +14,36 @@ final class RegistrationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
-    
-    let name = Item(type: RegistrationCell.name)
-    let email = Item(type: RegistrationCell.email, validationType: .email)
-    let password = Item(type: RegistrationCell.password, validationType: .password)
-    let confirmPassword = Item(type: RegistrationCell.confirmPass)
-    let gender = Item(type: RegistrationCell.gender)
-    let date = Item(type: RegistrationCell.date)
-    let country = Item(type: RegistrationCell.country)
-    let intrest = Item(type: RegistrationCell.intrest)
-    let name1 = Item(type: RegistrationCell.name)
-    let email1 = Item(type: RegistrationCell.email, validationType: .email)
-    let password1 = Item(type: RegistrationCell.password, validationType: .password)
-    let confirmPassword1 = Item(type: RegistrationCell.confirmPass)
-    let gender1 = Item(type: RegistrationCell.gender)
-    let date1 = Item(type: RegistrationCell.date)
-    let country1 = Item(type: RegistrationCell.country)
-    let intrest1 = Item(type: RegistrationCell.intrest)
-    var formItems: [Item] { return [name, email, password, confirmPassword, gender, date, country, intrest, name1, email1, password1, confirmPassword1, gender1, date1, country1, intrest1] }
+    let regForm = RegistrationForm()
+    var formItems = [Item]()
     
     var dataSource: ListDataSource? {
-      didSet {
-        tableView.dataSource = dataSource
-        tableView.reloadData()
-      }
+        didSet {
+            tableView.dataSource = dataSource
+            tableView.reloadData()
+        }
     }
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        formItems = regForm.formItems
         configureTableView()
         configureDataSource()
-        
     }
+    
 }
 
 // MARK: - Configurations
 
 private extension RegistrationViewController {
+    
     func configureTableView() {
         tableView.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
         tableView.register(UINib(nibName: "RadioButtonCell", bundle: nil), forCellReuseIdentifier: "RadioButtonCell")
     }
     
     func configureDataSource() {
-//        let all = RegistrationCell.allCases + RegistrationCell.allCases
-//        dataSource = ListDataSource(items: all.map { Item(type: $0)} )
         dataSource = ListDataSource(items: formItems )
         dataSource?.presentSearchCountryView = { [weak self] in self?.displaySearch($0) }
     }
@@ -68,17 +52,17 @@ private extension RegistrationViewController {
 // MARK: - Actions
 
 private extension RegistrationViewController {
+    
     func displaySearch(_ isSelected: Bool) {
         guard isSelected else { return }
         let main = UIStoryboard(name: "SearchViewController", bundle: nil)
         let searchView = main.instantiateViewController(identifier: "SearchViewController") as? SearchViewController
-        searchView?.selectedCountry = country.value
+        searchView?.selectedCountry = regForm.country.value
         searchView?.delegate = self
         present(searchView!, animated: true, completion: nil)
     }
     
     @IBAction func doneClicked(_ sender: Any) {
-        
         var success = true
         
         for index in 0..<formItems.count-1 {
@@ -86,49 +70,44 @@ private extension RegistrationViewController {
             let cell = tableView.cellForRow(at: indexPath) as! BaseCell
             let item = formItems[index]
             let value = item.value
-            
-           
-                if value.isValid(item.validationType) {
-                    if item == confirmPassword {
-                        if value.isLike(string: password.value) , value.isValid(.password) {
-                            cell.titleLabel.textColor = .green
-                        }else{
-                            cell.titleLabel.textColor = .lightRed
-                            success = false
-                        }
-                        continue
+    
+            if value.isValid(item.validationType) {
+                if item == regForm.confirmPassword {
+                    if value.isLike(string: regForm.password.value) , value.isValid(.password) {
+                        cell.titleLabel.textColor = .green
+                    }else{
+                        cell.titleLabel.textColor = .lightRed
+                        success = false
                     }
-                    cell.titleLabel.textColor = .green
-                } else {
-                    cell.titleLabel.textColor = .lightRed
-                    success = false
+                    continue
                 }
-           
+                cell.titleLabel.textColor = .green
+            } else {
+                cell.titleLabel.textColor = .lightRed
+                success = false
+            }
         }
+        
         if success {
             presentUserDetailsView()
         }
-         
-     }
-}
-
-extension RegistrationViewController {
+        
+    }
     
     func presentUserDetailsView() {
         let userDetails = UIStoryboard(name: "UserDetailsController", bundle: nil).instantiateViewController(withIdentifier: "UserDetailsController") as! UserDetailsController
-        let data = RegistrationForm()
-        data.configData(items: formItems)
-        userDetails.userInformations = data
+        userDetails.userInformations = regForm
         present(userDetails, animated: true, completion: nil)
     }
     
 }
 
+// MARK: - SearchCountryDelegate
 
 extension RegistrationViewController: SearchCountryDelegate {
     
     func selectedCountry(string: String) {
-        country.value = string
+        regForm.country.value = string
         tableView.reloadData()
     }
 }

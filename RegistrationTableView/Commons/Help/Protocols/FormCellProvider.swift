@@ -23,5 +23,5 @@ protocol FormCellProvider {
     var keyboardType: UIKeyboardType { get }
     
     var cellType: FormCellType { get }
-
+    
 }

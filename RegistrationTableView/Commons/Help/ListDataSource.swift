@@ -7,14 +7,15 @@
 //
 import UIKit
 
-class ListDataSource: NSObject {
+final class ListDataSource: NSObject {
     
+    // MARK: - Properties
     typealias CountryHandler = (Bool) -> Void
     var presentSearchCountryView: CountryHandler?
+    private let items: [Item]?
+    private let cells: [CountryCellForm]?
     
-    let items: [Item]?
-    let cells: [CountryCellForm]?
-    
+    // MARK: - Initalizers
     init(items: [Item]) {
         self.items = items
         self.cells = nil
@@ -25,11 +26,9 @@ class ListDataSource: NSObject {
         self.items = nil
     }
     
-    func product(at indexPath: IndexPath) -> Item {
-        return self.items![indexPath.row]
-    }
 }
 
+// MARK: - TableViewDataSource
 extension ListDataSource: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

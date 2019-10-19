@@ -8,33 +8,26 @@
 
 import UIKit
 
-protocol SearchCountryDelegate {
-    func selectedCountry(string: String)
-}
-
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    //MARK: - Outlets
+    @IBOutlet weak private var searchBar: UISearchBar!
+    @IBOutlet weak private var tableView: UITableView!
     
+    //MARK: - properties
     typealias SenectedCountry = (String) -> Void
     var delegate: SearchCountryDelegate?
-    var dataSource: ListDataSource? {
+    private var dataSource: ListDataSource? {
       didSet {
         tableView.dataSource = dataSource
         tableView.reloadData()
       }
     }
-    
-    struct countryCell {
-        var country: String
-        var isSelected: Bool
-    }
-    
-    
     var selectedCountry = ""
-    var countries = [CountryCellForm(country: "Jordan"), CountryCellForm(country: "Emarat"),  CountryCellForm(country: "America"),  CountryCellForm(country: "Mesh 3arf sho")]
-    var filteredTableData: [CountryCellForm]!
+    private var countries = [CountryCellForm(country: "Jordan"), CountryCellForm(country: "Emarat"),  CountryCellForm(country: "America"),  CountryCellForm(country: "Mesh 3arf sho")]
+    private var filteredTableData: [CountryCellForm]!
+    
+    //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +36,19 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
         
+        setupSelectedCountry()
+        
+        filteredTableData = countries
+        dataSource = ListDataSource(cells: filteredTableData)
+    }
+    
+}
+
+//MARK: - Configerations
+
+extension SearchViewController {
+    
+    fileprivate func setupSelectedCountry() {
         for index in 0..<countries.count {
             if countries[index].country == selectedCountry {
                 countries[index].isChecked = true
@@ -52,12 +58,11 @@ class SearchViewController: UIViewController {
                 break
             }
         }
-        
-        filteredTableData = countries
-        dataSource = ListDataSource(cells: filteredTableData)
     }
     
 }
+
+//MARK: - TableViewDelegate
 
 extension SearchViewController: UITableViewDelegate {
     
@@ -67,6 +72,8 @@ extension SearchViewController: UITableViewDelegate {
         dismiss(animated: true, completion: nil)
     }
 }
+
+//MARK: - SearchBarDelegate
 
 extension SearchViewController: UISearchBarDelegate {
     

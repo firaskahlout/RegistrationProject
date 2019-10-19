@@ -9,6 +9,6 @@
 import Foundation
 
 enum DateFormat: String {
-    case MMMddYYYY = "MMM dd ,YYYY"
     
+    case MMMddYYYY = "MMM dd ,YYYY"
 }

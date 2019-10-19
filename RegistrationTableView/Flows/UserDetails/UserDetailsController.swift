@@ -19,8 +19,9 @@ final class UserDetailsController: UIViewController {
     @IBOutlet weak private var gender: UITextField!
     
     //MARK: Properties
-    
     var userInformations: RegistrationForm?
+    
+    //MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +32,13 @@ final class UserDetailsController: UIViewController {
 // MARK: - Configurations
 
 private extension UserDetailsController {
+    
     func configureUserInfo() {
-        userName.text = userInformations?.name
-        email.text = userInformations?.email
-        birthDate.text = userInformations?.birthDate
-        country.text = userInformations?.country
-        intrest.text = userInformations?.intrest
-        gender.text = userInformations?.gender
+        userName.text = userInformations?.name.value
+        email.text = userInformations?.email.value
+        birthDate.text = userInformations?.date.value
+        country.text = userInformations?.country.value
+        intrest.text = userInformations?.intrest.value
+        gender.text = userInformations?.gender.value
     }
 }

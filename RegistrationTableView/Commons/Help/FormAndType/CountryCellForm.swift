@@ -10,9 +10,11 @@ import Foundation
 
 class CountryCellForm: NSObject {
     
+    // MARK: - Properties
     var country: String
     var isChecked: Bool
-
+    
+    // MARK: - Initalizer
     init(country: String, isChecked: Bool = false) {
         self.country = country
         self.isChecked = isChecked

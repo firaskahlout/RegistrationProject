@@ -7,18 +7,12 @@
 //
 import UIKit
 
-public protocol ReusableView: class {
-    /// Get identifier from class
-    static var defaultReuseIdentifier: String { get }
-}
-
 public extension ReusableView where Self: UIView {
     static var defaultReuseIdentifier: String {
         // Set the Identifier from class name
         return NSStringFromClass(self)
     }
 }
-
 
 /// Extend to easier allow for identifier to be set without much work
 public extension UITableView {

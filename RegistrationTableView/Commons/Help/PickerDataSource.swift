@@ -10,15 +10,18 @@ import UIKit
 
 class PickerDataSource: NSObject {
     
+    // MARK: - Properties
     let items: [String]
     
+    // MARK: - Initalizer
     init(items: [String]) {
         self.items = items
     }
     
 }
 
-extension PickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {
+//MARK: - PickerViewDataSource
+extension PickerDataSource: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -27,6 +30,11 @@ extension PickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return items.count
     }
+    
+}
+
+//MARK: - PickerViewDelegate
+extension PickerDataSource:  UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return items[row]
