@@ -72,13 +72,13 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UISearchBarDelegate {
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filteredTableData = searchText.isEmpty ? countries: countries.filter { (item: String) -> Bool in
-//            // If dataItem matches the searchText, return true to include it
-//            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-//        }
-//        dataSource = ListDataSource(cells: filteredTableData)
-//    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredTableData = searchText.isEmpty ? countries: countries.filter { (item: CountryCellForm) -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            return item.country.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        dataSource = ListDataSource(cells: filteredTableData)
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)
