@@ -37,27 +37,29 @@ extension ListDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if cells == nil {
-            return items!.count
-        }else {
-            return cells!.count
+        if let cells = cells {
+            return cells.count
         }
-        
+        if let items = items {
+            return items.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if items == nil {
+        if let cells = cells {
             let cell = UITableViewCell()
-            cell.textLabel?.text = cells![indexPath.row].country
-            if cells![indexPath.row].isChecked {
+            cell.textLabel?.text = cells[indexPath.row].country
+            if cells[indexPath.row].isChecked {
                 cell.accessoryType = .checkmark
             }else{
                 cell.accessoryType = .none
             }
             return cell
-        }else {
-            let item = items![indexPath.row]
+        }
+        if let items = items {
+            let item = items[indexPath.row]
             let type = item.type
             let identifier = type.identifier
             let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseCell
@@ -68,7 +70,7 @@ extension ListDataSource: UITableViewDataSource {
             return cell
         }
         
-        
+        return UITableViewCell()
     }
     
 }
