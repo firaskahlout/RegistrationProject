@@ -7,27 +7,29 @@
 //
 import UIKit
 
-public extension ReusableView where Self: UIView {
-    static var defaultReuseIdentifier: String {
-        // Set the Identifier from class name
-        return NSStringFromClass(self)
+extension UITableView {
+    
+    func register<T: UITableViewCell>(_ cell: T.Type) {
+        let nib = UINib(nibName: cell.reuseIdentifier, bundle: nil)
+        register(nib, forCellReuseIdentifier: cell.reuseIdentifier)
+    }
+    
+    
+
+    func dequeue<T: UITableViewCell>(cellClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(
+            withIdentifier: cellClass.reuseIdentifier, for: indexPath) as? T else {
+                fatalError(
+                    "Error: cell with id: \(cellClass.reuseIdentifier) for indexPath: \(indexPath) is not \(T.self)")
+        }
+        return cell
     }
 }
 
-/// Extend to easier allow for identifier to be set without much work
-public extension UITableView {
+extension UITableViewCell {
     
-    /// Register cell with automatically setting Identifier
-    func register<T: UITableViewCell>(_: T.Type) where T: ReusableView {
-        register(T.self, forCellReuseIdentifier: T.defaultReuseIdentifier)
+    static var reuseIdentifier: String {
+        return "\(self)"
     }
     
-    /// Get cell with the default reuse cell identifier
-    func dequeueReusableCell<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T where T: ReusableView {
-        guard let cell = dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier, for: indexPath as IndexPath) as? T else {
-            fatalError("Could not dequeue cell: \(T.self) with identifier: \(T.defaultReuseIdentifier)")
-        }
-        
-        return cell
-    }
 }

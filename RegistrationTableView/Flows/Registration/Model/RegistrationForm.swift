@@ -14,13 +14,28 @@ final class RegistrationForm {
     let name = Item(type: RegistrationCell.name)
     let email = Item(type: RegistrationCell.email, validationType: .email)
     let password = Item(type: RegistrationCell.password, validationType: .password)
-    let confirmPassword = Item(type: RegistrationCell.confirmPass)
+    let confirmPassword = Item(type: RegistrationCell.confirmPass, validationType: .confirmPassword)
     let gender = Item(type: RegistrationCell.gender)
     let date = Item(type: RegistrationCell.date)
     let country = Item(type: RegistrationCell.country)
     let intrest = Item(type: RegistrationCell.intrest)
     
-    var formItems: [Item] { return [name, email, password, confirmPassword, gender, date, country, intrest] }
+    var items: [Item] {
+        return [name, email, password, confirmPassword, gender, date, country, intrest]
+    }
     
-    
+    func validateItems() -> Bool {
+        var isSuccess = true
+        
+        for item in items {
+            let isValid = item.value.isValid(item.validationType)
+            if isValid {
+                item.labelColor = .green
+            }else{
+                item.labelColor = .lightRed
+                isSuccess = isValid
+            }
+        }
+        return isSuccess
+    }
 }

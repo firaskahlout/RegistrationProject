@@ -24,4 +24,6 @@ protocol FormCellProvider {
     
     var cellType: FormCellType { get }
     
+    var cellForm: AnyClass { get }
+    
 }

@@ -10,8 +10,7 @@ import UIKit
 final class ListDataSource: NSObject {
     
     // MARK: - Properties
-    typealias CountryHandler = (Bool) -> Void
-    var presentSearchCountryView: CountryHandler?
+
     private let items: [Item]?
     private let cells: [CountryCellForm]?
     
@@ -61,10 +60,7 @@ extension ListDataSource: UITableViewDataSource {
             let item = items[indexPath.row]
             let type = item.type
             let identifier = type.identifier
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseCell
-            cell.countryFieldSelected = { isSelected in
-                self.presentSearchCountryView?(isSelected)
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CellPresentable
             cell.display(item: item)
             return cell
         }

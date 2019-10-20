@@ -13,12 +13,11 @@ extension String {
     func isValid(_ pattern: RegEx) -> Bool {
         if pattern == .none {
             return !self.isEmpty
+        }else if pattern == .confirmPassword {
+            return self.isValid(.password) && !self.isEmpty
         }
         return NSPredicate(format:"SELF MATCHES %@", pattern.rawValue).evaluate(with: self)
     }
     
-    func isLike(string: String) -> Bool {
-        return self == string
-    }
 }
 

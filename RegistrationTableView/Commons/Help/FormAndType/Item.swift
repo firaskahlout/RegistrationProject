@@ -14,11 +14,15 @@ class Item: NSObject {
     var value: String
     let type: FormCellProvider
     let validationType: RegEx
+    var labelColor: UIColor
+    
+    var handler: (() -> Void)?
     
     // MARK: - Initalizer
-    init(type: FormCellProvider, value: String = "", validationType: RegEx = .none) {
+    init(type: FormCellProvider, value: String = "", validationType: RegEx = .none, labelColor: UIColor = .gray) {
         self.type = type
         self.value = value
         self.validationType = validationType
+        self.labelColor = labelColor
     }
 }

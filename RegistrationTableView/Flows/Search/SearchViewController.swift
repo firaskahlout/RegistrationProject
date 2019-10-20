@@ -32,14 +32,9 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        searchBar.delegate = self
-        searchBar.becomeFirstResponder()
-        
+        setupDelegates()
         setupSelectedCountry()
-        
-        filteredTableData = countries
-        dataSource = ListDataSource(cells: filteredTableData)
+        setupTableDataSource()
     }
     
 }
@@ -47,6 +42,18 @@ final class SearchViewController: UIViewController {
 //MARK: - Configerations
 
 extension SearchViewController {
+    
+    fileprivate func setupDelegates() {
+        tableView.delegate = self
+        searchBar.delegate = self
+        searchBar.becomeFirstResponder()
+    }
+    
+    fileprivate func setupTableDataSource() {
+        filteredTableData = countries
+        dataSource = ListDataSource(cells: filteredTableData)
+    }
+    
     
     fileprivate func setupSelectedCountry() {
         for index in 0..<countries.count {
@@ -77,8 +84,8 @@ extension SearchViewController {
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        delegate?.selectedCountry(string: filteredTableData[indexPath.row].country)
+        let string = filteredTableData[indexPath.row].country
+        delegate?.selectedCountry(string: string)
         dismiss(animated: true, completion: nil)
     }
 }
@@ -88,9 +95,8 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = searchText.isEmpty ? countries: countries.filter { (item: CountryCellForm) -> Bool in
-            // If dataItem matches the searchText, return true to include it
-            return item.country.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        filteredTableData = searchText.isEmpty ? countries: countries.filter {
+            $0.country.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         dataSource = ListDataSource(cells: filteredTableData)
     }

@@ -23,6 +23,13 @@ enum RegistrationCell: String, CaseIterable, FormCellProvider {
         return rawValue.capitalized
     }
     
+    var cellForm: AnyClass{
+        switch self {
+        case .gender: return RadioButtonCell.self
+        default: return TextFieldCell.self
+        }
+    }
+    
     var identifier: String{
         switch self {
         case .gender: return "RadioButtonCell"

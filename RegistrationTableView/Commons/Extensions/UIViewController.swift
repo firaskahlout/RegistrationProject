@@ -8,43 +8,39 @@
 
 import UIKit
 
-extension UIViewController {
-    /**
-     This class function works if the UIViewController class name, the Storyboard file name,
-     and the Storyboard Id of the Scene are the same
-     */
-    static func loadViewController<T: UIViewController>(from bundle: Bundle = .main) -> T {
-        let identifier = className(some: T.self)
-        let storyboard = UIStoryboard(name: identifier, bundle: bundle)
-        guard let screen = storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
-            fatalError("UIViewController with identifier '\(identifier)' was not found")
-        }
-        return screen
+enum Storyboard: String {
+
+    case main = "Main"
+    case userDetails = "UserDetails"
+    case commons = "Commons"
+}
+
+protocol StoryboardIdentifiable {
+    static var storyboardIdentifier: String { get }
+}
+
+extension StoryboardIdentifiable where Self: UIViewController {
+    
+    static var storyboardIdentifier: String {
+        return String(describing: self)
     }
-    /**
-     This method works if the UIViewController class name, the Storyboard file name,
-     and the Storyboard Id of the Scene are the same
-     */
-    func loadViewController<T: UIViewController>(from bundle: Bundle = .main) -> T {
-        let identifier = className(some: T.self)
-        let storyboard = UIStoryboard(name: identifier, bundle: bundle)
-        guard let screen = storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
-            fatalError("UIViewController with identifier '\(identifier)' was not found")
-        }
-        return screen
+    
+    static func instantiate(of storyboard: Storyboard) ->  Self {
+        return UIStoryboard(storyboard: storyboard).instantiateViewController()
     }
 }
 
-extension UIStoryboard {
-    static func load<T: UIViewController>() -> T {
-        let sceneId = className(some: T.self)
-        let storyboard = UIStoryboard(name: sceneId, bundle: .main)
-        guard let screen = storyboard.instantiateViewController(withIdentifier: sceneId) as? T else {
-            fatalError("No UIViewController with ID \(sceneId) was found")
-        }
-        return screen
+extension UIViewController: StoryboardIdentifiable { }
+
+fileprivate extension UIStoryboard {
+    convenience init(storyboard: Storyboard) {
+        self.init(name: storyboard.rawValue, bundle: nil)
     }
-}
-private func className(some: Any) -> String {
-    return (some is Any.Type) ? "\(some)" : "\(type(of: some))"
+    
+    func instantiateViewController<T: UIViewController>() -> T {
+        guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
+            fatalError("Couldn't instantiate view controller with identifier \(T.storyboardIdentifier) ")
+        }
+        return viewController
+    }
 }
