@@ -11,12 +11,12 @@ import Foundation
 class ItemSelector: NSObject {
     
     // MARK: - Properties
-    var country: String
-    var isChecked: Bool
+    var title: String
+    var isSelected: Bool
     
     // MARK: - Initalizer
-    init(country: String, isChecked: Bool = false) {
-        self.country = country
-        self.isChecked = isChecked
+    init(title: String, isSelected: Bool = false) {
+        self.title = title
+        self.isSelected = isSelected
     }
 }

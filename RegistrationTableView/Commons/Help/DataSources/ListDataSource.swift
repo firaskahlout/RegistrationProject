@@ -48,8 +48,8 @@ extension ListDataSource: UITableViewDataSource {
         
         if let cells = cells {
             let cell = UITableViewCell()
-            cell.textLabel?.text = cells[indexPath.row].country
-            if cells[indexPath.row].isChecked {
+            cell.textLabel?.text = cells[indexPath.row].title
+            if cells[indexPath.row].isSelected {
                 cell.accessoryType = .checkmark
             }else{
                 cell.accessoryType = .none

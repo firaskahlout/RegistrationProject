@@ -57,8 +57,8 @@ extension SearchViewController {
     
     fileprivate func setupSelectedCountry() {
         for index in 0..<countries.count {
-            if countries[index].country == selectedCountry {
-                countries[index].isChecked = true
+            if countries[index].title == selectedCountry {
+                countries[index].isSelected = true
                 let x = countries[index]
                 countries[index] = countries[0]
                 countries[0] = x
@@ -73,7 +73,7 @@ extension SearchViewController {
   
     func setCountries(countries: [String]) {
         for item in countries {
-            self.countries.append(ItemSelector(country: item))
+            self.countries.append(ItemSelector(title: item))
         }
     }
   
@@ -84,7 +84,7 @@ extension SearchViewController {
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let string = filteredTableData[indexPath.row].country
+        let string = filteredTableData[indexPath.row].title
         delegate?.selectedCountry(string: string)
         dismiss(animated: true, completion: nil)
     }
@@ -96,7 +96,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTableData = searchText.isEmpty ? countries: countries.filter {
-            $0.country.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            $0.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         dataSource = ListDataSource(cells: filteredTableData)
     }

@@ -8,38 +8,27 @@
 
 import UIKit
 
-class RadioButtonCell: UITableViewCell, CellPresentable {
+final class RadioButtonCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak private var femaleRadio: UIView!
-    @IBOutlet weak private var maleRadio: UIView!
-    @IBOutlet weak private var maleRadioSuperView: UIView!
-    @IBOutlet weak private var femaleRadioSuperView: UIView!
+    //MARK: Outlets
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var femaleRadio: UIView!
+    @IBOutlet private weak var maleRadio: UIView!
+    @IBOutlet private weak var maleRadioSuperView: UIView!
+    @IBOutlet private weak var femaleRadioSuperView: UIView!
     
     
-    //MARK: - Properties
+    //MARK: Properties
     private var item: Item!
-    private var type: RegistrationCell!
     
-    
+    //MARK: LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         configGenderRadioButtons()
     }
     
-
-    
-    //MARK: - Main Method
-    func display(item: Item) {
-        self.item = item
-        type = item.type as? RegistrationCell
-        titleLabel.textColor = item.labelColor
-        
-        configGenderCell(item)
-    }
-    
-    //MARK: - ACTIONS
+    //MARK: ACTIONS
     @IBAction private func femaleClicked(_ sender: Any) {
         selectFemale()
     }
@@ -49,17 +38,24 @@ class RadioButtonCell: UITableViewCell, CellPresentable {
     }
     
     
-    func selectFemale() {
-        maleRadio.backgroundColor = nil
-        femaleRadio.backgroundColor = .black
-        item.value = "Female"
+    
+}
+
+//MARK: - CellPresentable
+extension RadioButtonCell: CellPresentable {
+    
+    func display(item: Item) {
+        self.item = item
+        
+        titleLabel.textColor = item.labelColor
+        configGenderCell(item)
     }
     
-    func selectMale() {
-        femaleRadio.backgroundColor = nil
-        maleRadio.backgroundColor = .black
-        item.value = "Male"
-    }
+}
+
+
+//MARK: - Configerations
+private extension RadioButtonCell {
     
     func configGenderCell(_ item: Item) {
         if item.value == "Male" {
@@ -80,4 +76,22 @@ class RadioButtonCell: UITableViewCell, CellPresentable {
         maleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
         femaleRadio.layer.cornerRadius = femaleRadio.frame.width / 2
     }
+    
+}
+
+//MARK: - Actions
+private extension RadioButtonCell {
+    
+    func selectFemale() {
+        maleRadio.backgroundColor = nil
+        femaleRadio.backgroundColor = .black
+        item.value = "Female"
+    }
+    
+    func selectMale() {
+        femaleRadio.backgroundColor = nil
+        maleRadio.backgroundColor = .black
+        item.value = "Male"
+    }
+    
 }

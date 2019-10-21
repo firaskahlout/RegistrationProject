@@ -8,13 +8,11 @@
 
 import UIKit
 
-class TextFieldCell: UITableViewCell {
-    
+final class TextFieldCell: UITableViewCell {
     
     //MARK: - OUTLETS
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
-    
     
     //MARK: - Properties
     private var item: Item!
@@ -30,7 +28,11 @@ class TextFieldCell: UITableViewCell {
         }
     }
     
-    //MARK: - Main Method
+    
+}
+
+//MARK: - Configerations
+private extension TextFieldCell {
     
     func configDateField() {
         let minDate = Date(timeIntervalSince1970: 1)
@@ -50,9 +52,10 @@ class TextFieldCell: UITableViewCell {
         textField.text = item.value
         textField.delegate = self
     }
+    
 }
 
-
+//MARK: - CellPresentable
 extension TextFieldCell: CellPresentable {
     func display(item: Item) {
         self.item = item
@@ -76,16 +79,12 @@ extension TextFieldCell: CellPresentable {
 extension TextFieldCell: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        item.labelColor = .gray
+        titleLabel.textColor = item.labelColor
         if type == .country {
             item.handler?()
         }
         return true
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        item.value = text
-        titleLabel.textColor = .darkGray
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -98,13 +97,4 @@ extension TextFieldCell: UITextFieldDelegate {
         item.value = text
     }
     
-}
-
-
-extension Date {
-    func string(_ format: DateFormat) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format.rawValue
-        return dateFormatter.string(from: self)
-    }
 }
