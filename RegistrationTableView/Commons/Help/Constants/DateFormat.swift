@@ -6,8 +6,6 @@
 //  Copyright © 2019 Firas Alkahlout. All rights reserved.
 //
 
-import Foundation
-
 enum DateFormat: String {
     
     case MMMddYYYY = "MMM dd ,YYYY"

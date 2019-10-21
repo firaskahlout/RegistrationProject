@@ -8,16 +8,7 @@
 
 import UIKit
 
-enum Storyboard: String {
-
-    case main = "Main"
-    case userDetails = "UserDetails"
-    case commons = "Commons"
-}
-
-protocol StoryboardIdentifiable {
-    static var storyboardIdentifier: String { get }
-}
+extension UIViewController: StoryboardIdentifiable { }
 
 extension StoryboardIdentifiable where Self: UIViewController {
     
@@ -29,8 +20,6 @@ extension StoryboardIdentifiable where Self: UIViewController {
         return UIStoryboard(storyboard: storyboard).instantiateViewController()
     }
 }
-
-extension UIViewController: StoryboardIdentifiable { }
 
 fileprivate extension UIStoryboard {
     convenience init(storyboard: Storyboard) {

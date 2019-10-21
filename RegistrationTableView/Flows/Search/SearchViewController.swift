@@ -11,8 +11,8 @@ import UIKit
 final class SearchViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak private var searchBar: UISearchBar!
-    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
     
     //MARK: - properties
     typealias SenectedCountry = (String) -> Void
@@ -39,23 +39,33 @@ final class SearchViewController: UIViewController {
     
 }
 
+//MARK: - ACTIONS
+extension SearchViewController {
+  
+    func setCountries(countries: [String]) {
+        for item in countries {
+            self.countries.append(ItemSelector(title: item))
+        }
+    }
+  
+}
+
 //MARK: - Configerations
 
-extension SearchViewController {
+private extension SearchViewController {
     
-    fileprivate func setupDelegates() {
+    func setupDelegates() {
         tableView.delegate = self
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
     }
     
-    fileprivate func setupTableDataSource() {
+    func setupTableDataSource() {
         filteredTableData = countries
         dataSource = ListDataSource(cells: filteredTableData)
     }
     
-    
-    fileprivate func setupSelectedCountry() {
+    func setupSelectedCountry() {
         for index in 0..<countries.count {
             if countries[index].title == selectedCountry {
                 countries[index].isSelected = true
@@ -67,16 +77,6 @@ extension SearchViewController {
         }
     }
     
-}
-
-extension SearchViewController {
-  
-    func setCountries(countries: [String]) {
-        for item in countries {
-            self.countries.append(ItemSelector(title: item))
-        }
-    }
-  
 }
 
 //MARK: - TableViewDelegate

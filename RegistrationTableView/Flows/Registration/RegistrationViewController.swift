@@ -12,14 +12,13 @@ import IQKeyboardManagerSwift
 final class RegistrationViewController: UIViewController {
     
     // MARK: Outlets
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     // MARK: Properties
     
     private let form = RegistrationForm()
 
-    
-    var dataSource: ListDataSource? {
+    private var dataSource: ListDataSource? {
         didSet {
             tableView.dataSource = dataSource
             tableView.reloadData()

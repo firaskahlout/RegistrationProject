@@ -11,12 +11,12 @@ import UIKit
 final class UserDetailsController: UIViewController {
 
     // MARK: Outlets
-    @IBOutlet weak private var userName: UITextField!
-    @IBOutlet weak private var email: UITextField!
-    @IBOutlet weak private var birthDate: UITextField!
-    @IBOutlet weak private var country: UITextField!
-    @IBOutlet weak private var intrest: UITextField!
-    @IBOutlet weak private var gender: UITextField!
+    @IBOutlet private weak var userName: UITextField!
+    @IBOutlet private weak var email: UITextField!
+    @IBOutlet private weak var birthDate: UITextField!
+    @IBOutlet private weak var country: UITextField!
+    @IBOutlet private weak var intrest: UITextField!
+    @IBOutlet private weak var gender: UITextField!
     
     //MARK: Properties
     var userInformations: RegistrationForm?

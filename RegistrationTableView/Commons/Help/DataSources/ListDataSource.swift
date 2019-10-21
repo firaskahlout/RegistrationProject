@@ -10,7 +10,7 @@ import UIKit
 final class ListDataSource: NSObject {
     
     // MARK: - Properties
-
+    
     private let items: [Item]?
     private let cells: [ItemSelector]?
     

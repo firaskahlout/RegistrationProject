@@ -14,8 +14,6 @@ extension UITableView {
         register(nib, forCellReuseIdentifier: cell.reuseIdentifier)
     }
     
-    
-
     func dequeue<T: UITableViewCell>(cellClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(
             withIdentifier: cellClass.reuseIdentifier, for: indexPath) as? T else {
@@ -24,12 +22,4 @@ extension UITableView {
         }
         return cell
     }
-}
-
-extension UITableViewCell {
-    
-    static var reuseIdentifier: String {
-        return "\(self)"
-    }
-    
 }
