@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1812A5B7234F445800B5180B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812A5B6234F445800B5180B /* Item.swift */; };
 		1816DACF234CBF1B00C73851 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816DACE234CBF1B00C73851 /* RegistrationForm.swift */; };
-		1859AAF9235B39AB00724972 /* CountryCellForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859AAF8235B39AB00724972 /* CountryCellForm.swift */; };
+		1859AAF9235B39AB00724972 /* ItemSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859AAF8235B39AB00724972 /* ItemSelector.swift */; };
 		1859AAFC235B88C700724972 /* FormCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859AAFB235B88C700724972 /* FormCellProvider.swift */; };
 		1859AB00235B90D000724972 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859AAFF235B90D000724972 /* ReusableView.swift */; };
 		1859AB02235B95E400724972 /* SearchCountryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859AB01235B95E400724972 /* SearchCountryDelegate.swift */; };
@@ -44,7 +44,7 @@
 /* Begin PBXFileReference section */
 		1812A5B6234F445800B5180B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1816DACE234CBF1B00C73851 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
-		1859AAF8235B39AB00724972 /* CountryCellForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellForm.swift; sourceTree = "<group>"; };
+		1859AAF8235B39AB00724972 /* ItemSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelector.swift; sourceTree = "<group>"; };
 		1859AAFB235B88C700724972 /* FormCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCellProvider.swift; sourceTree = "<group>"; };
 		1859AAFF235B90D000724972 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		1859AB01235B95E400724972 /* SearchCountryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCountryDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				18727B51234DB17F0030EBFF /* FormCellType.swift */,
 				18727B57234DEF9F0030EBFF /* RegistrationCell.swift */,
 				1812A5B6234F445800B5180B /* Item.swift */,
-				1859AAF8235B39AB00724972 /* CountryCellForm.swift */,
+				1859AAF8235B39AB00724972 /* ItemSelector.swift */,
 			);
 			path = FormAndType;
 			sourceTree = "<group>";
@@ -417,7 +417,7 @@
 				18727B52234DB17F0030EBFF /* FormCellType.swift in Sources */,
 				18A6FBE5234B1D6300D1D193 /* RegistrationViewController.swift in Sources */,
 				18D5FAF4235A457100BCCD5C /* UIViewController.swift in Sources */,
-				1859AAF9235B39AB00724972 /* CountryCellForm.swift in Sources */,
+				1859AAF9235B39AB00724972 /* ItemSelector.swift in Sources */,
 				18A2BEE02355C262000F750B /* SearchViewController.swift in Sources */,
 				18EA543C23533B1500279357 /* RegEx.swift in Sources */,
 				18A39B642354871600BDD599 /* UIColor.swift in Sources */,

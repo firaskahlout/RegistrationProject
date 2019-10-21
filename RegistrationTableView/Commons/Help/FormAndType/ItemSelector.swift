@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CountryCellForm: NSObject {
+class ItemSelector: NSObject {
     
     // MARK: - Properties
     var country: String

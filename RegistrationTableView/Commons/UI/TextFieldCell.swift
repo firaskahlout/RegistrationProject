@@ -94,6 +94,8 @@ extension TextFieldCell: UITextFieldDelegate {
         } else if type == RegistrationCell.intrest {
             textField.text = type.pickerData[picker.selectedRow(inComponent: 0)]
         }
+        guard let text = textField.text else { return }
+        item.value = text
     }
     
 }

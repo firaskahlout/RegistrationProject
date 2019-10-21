@@ -12,7 +12,7 @@ final class ListDataSource: NSObject {
     // MARK: - Properties
 
     private let items: [Item]?
-    private let cells: [CountryCellForm]?
+    private let cells: [ItemSelector]?
     
     // MARK: - Initalizers
     init(items: [Item]) {
@@ -20,7 +20,7 @@ final class ListDataSource: NSObject {
         self.cells = nil
     }
     
-    init(cells: [CountryCellForm]) {
+    init(cells: [ItemSelector]) {
         self.cells = cells
         self.items = nil
     }

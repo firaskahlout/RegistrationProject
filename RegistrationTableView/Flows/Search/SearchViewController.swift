@@ -24,8 +24,8 @@ final class SearchViewController: UIViewController {
       }
     }
     var selectedCountry = ""
-    private var countries = [CountryCellForm]()
-    private var filteredTableData: [CountryCellForm]!
+    private var countries = [ItemSelector]()
+    private var filteredTableData: [ItemSelector]!
     
     //MARK: - LifeCycle
     
@@ -73,7 +73,7 @@ extension SearchViewController {
   
     func setCountries(countries: [String]) {
         for item in countries {
-            self.countries.append(CountryCellForm(country: item))
+            self.countries.append(ItemSelector(country: item))
         }
     }
   
