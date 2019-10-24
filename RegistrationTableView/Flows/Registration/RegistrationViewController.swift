@@ -15,8 +15,7 @@ final class RegistrationViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     // MARK: Properties
-    
-    private let form = RegistrationForm()
+    var presenter: RegistrationPresenter!
 
     private var dataSource: ListDataSource? {
         didSet {
@@ -28,6 +27,7 @@ final class RegistrationViewController: UIViewController {
     //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = RegistrationPresenter(view: self)
         configureTableView()
         configureDataSource()
         IQKeyboardManager.shared.enable = true 
@@ -43,19 +43,20 @@ private extension RegistrationViewController {
         tableView.register(RadioButtonCell.self)
     }
     
-    func configureDataSource() {
-        dataSource = ListDataSource(items: form.items)
-        form.country.handler = { [weak self] in self?.displaySearch() }
+    func configureDataSource() {////////////////
+        dataSource = ListDataSource(items: presenter.form.items)
+        presenter.form.country.handler = { [weak self] in self?.displaySearch() }
     }
+    
 }
 
 // MARK: - Actions
 
 private extension RegistrationViewController {
     
-    func displaySearch() {
+    func displaySearch() {/////////////
         let searchView = SearchViewController.instantiate(of: .commons)
-        let country = form.country
+        let country = presenter.form.country
         searchView.selectedCountry = country.value
         searchView.setCountries(countries: country.type.pickerData)
         searchView.delegate = self
@@ -64,13 +65,13 @@ private extension RegistrationViewController {
     
     @IBAction func doneClicked(_ sender: Any) {
         tableView.reloadData()
-        guard form.validateItems() else { return }
+        guard presenter.form.validateItems() else { return }
         presentUserDetailsView()
     }
     
     func presentUserDetailsView() {
         let userDetails = UserDetailsController.instantiate(of: .userDetails)
-        userDetails.userInformations = form
+        userDetails.userInformations = presenter.form
         present(userDetails, animated: true, completion: nil)
     }
 
@@ -80,8 +81,21 @@ private extension RegistrationViewController {
 
 extension RegistrationViewController: SearchCountryDelegate {
     
-    func selectedCountry(string: String) {
-        form.country.value = string
+    func setSelectedCountry(string: String) {
+        presenter.form.country.value = string
         tableView.reloadData()
     }
+    
+}
+
+
+extension RegistrationViewController: RegistrationPresentation {
+    
+    func reloadTableViewData() {
+        tableView.reloadData()
+    }
+    
+    
+    
+    
 }

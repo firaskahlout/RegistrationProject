@@ -16,7 +16,7 @@ final class SearchViewController: UIViewController {
     
     //MARK: - properties
     typealias SenectedCountry = (String) -> Void
-    var delegate: SearchCountryDelegate?
+    weak var delegate: SearchCountryDelegate?
     private var dataSource: ListDataSource? {
       didSet {
         tableView.dataSource = dataSource
@@ -26,12 +26,13 @@ final class SearchViewController: UIViewController {
     var selectedCountry = ""
     private var countries = [ItemSelector]()
     private var filteredTableData: [ItemSelector]!
+    var presenter: SearchPresenter!
     
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter = SearchPresenter(view: self)
         setupDelegates()
         setupSelectedCountry()
         setupTableDataSource()
@@ -85,7 +86,7 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let string = filteredTableData[indexPath.row].title
-        delegate?.selectedCountry(string: string)
+        delegate?.setSelectedCountry(string: string)
         dismiss(animated: true, completion: nil)
     }
 }
@@ -104,5 +105,12 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)
     }
+    
+}
+
+extension SearchViewController: SearchPresentation {
+    
+    
+    
     
 }

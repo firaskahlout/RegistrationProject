@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol SearchCountryDelegate {
-    func selectedCountry(string: String)
+protocol SearchCountryDelegate: class {
+    
+    func setSelectedCountry(string: String)
 }
