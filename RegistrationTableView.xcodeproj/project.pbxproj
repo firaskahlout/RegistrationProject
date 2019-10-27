@@ -15,6 +15,7 @@
 		1860C40D2358F710007010FD /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860C40C2358F710007010FD /* PickerDataSource.swift */; };
 		18727B52234DB17F0030EBFF /* FormCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727B51234DB17F0030EBFF /* FormCellType.swift */; };
 		18727B58234DEF9F0030EBFF /* RegistrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727B57234DEF9F0030EBFF /* RegistrationCell.swift */; };
+		187D0CE92365DC7C00C1401F /* UserDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C528AC2362023B0034C02A /* UserDetailsCell.swift */; };
 		1884E243235F2EA70053033D /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E242235F2EA70053033D /* SearchPresenter.swift */; };
 		1884E245235F2ED60053033D /* UserDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E244235F2ED60053033D /* UserDetailsPresenter.swift */; };
 		1884E247235F2F020053033D /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E246235F2F020053033D /* RegistrationPresenter.swift */; };
@@ -33,8 +34,8 @@
 		18AFD0EB235C931200160D7E /* RadioButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFD0EA235C931200160D7E /* RadioButtonCell.swift */; };
 		18AFD0ED235CA4CC00160D7E /* CellPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFD0EC235CA4CC00160D7E /* CellPresentable.swift */; };
 		18C528AA2361F6030034C02A /* DataDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C528A92361F6030034C02A /* DataDisplayer.swift */; };
-		18C528AE2362023B0034C02A /* DisplayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C528AC2362023B0034C02A /* DisplayerCell.swift */; };
-		18C528AF2362023B0034C02A /* DisplayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C528AD2362023B0034C02A /* DisplayerCell.xib */; };
+		18C528AF2362023B0034C02A /* UserDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C528AD2362023B0034C02A /* UserDetailsCell.xib */; };
+		18C528B2236223910034C02A /* HeaderUserDetailsTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C528B1236223910034C02A /* HeaderUserDetailsTable.xib */; };
 		18D41A20235A41C7003DF3EC /* UserDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D41A1F235A41C7003DF3EC /* UserDetails.storyboard */; };
 		18D5FAF2235A424C00BCCD5C /* Commons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D5FAF1235A424C00BCCD5C /* Commons.storyboard */; };
 		18D5FAF4235A457100BCCD5C /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5FAF3235A457100BCCD5C /* UIViewController.swift */; };
@@ -79,8 +80,9 @@
 		18AFD0EA235C931200160D7E /* RadioButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonCell.swift; sourceTree = "<group>"; };
 		18AFD0EC235CA4CC00160D7E /* CellPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPresentable.swift; sourceTree = "<group>"; };
 		18C528A92361F6030034C02A /* DataDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplayer.swift; sourceTree = "<group>"; };
-		18C528AC2362023B0034C02A /* DisplayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayerCell.swift; sourceTree = "<group>"; };
-		18C528AD2362023B0034C02A /* DisplayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayerCell.xib; sourceTree = "<group>"; };
+		18C528AC2362023B0034C02A /* UserDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsCell.swift; sourceTree = "<group>"; };
+		18C528AD2362023B0034C02A /* UserDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailsCell.xib; sourceTree = "<group>"; };
+		18C528B1236223910034C02A /* HeaderUserDetailsTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderUserDetailsTable.xib; sourceTree = "<group>"; };
 		18D41A1F235A41C7003DF3EC /* UserDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetails.storyboard; sourceTree = "<group>"; };
 		18D5FAF1235A424C00BCCD5C /* Commons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Commons.storyboard; sourceTree = "<group>"; };
 		18D5FAF3235A457100BCCD5C /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +126,7 @@
 		1889D9B62352676300A2FC06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				18C528AB236202040034C02A /* DisplayerCell */,
+				18C528B0236223240034C02A /* HeaderUserDetailsTable */,
 				18D9B3E8235E36B600246A1F /* TextFieldCell */,
 				18D9B3E9235E36C800246A1F /* RadioButtonCell */,
 			);
@@ -279,13 +281,21 @@
 			path = RegistrationTableView;
 			sourceTree = "<group>";
 		};
-		18C528AB236202040034C02A /* DisplayerCell */ = {
+		18C528AB236202040034C02A /* UserDetailsCell */ = {
 			isa = PBXGroup;
 			children = (
-				18C528AD2362023B0034C02A /* DisplayerCell.xib */,
-				18C528AC2362023B0034C02A /* DisplayerCell.swift */,
+				18C528AD2362023B0034C02A /* UserDetailsCell.xib */,
+				18C528AC2362023B0034C02A /* UserDetailsCell.swift */,
 			);
-			path = DisplayerCell;
+			path = UserDetailsCell;
+			sourceTree = "<group>";
+		};
+		18C528B0236223240034C02A /* HeaderUserDetailsTable */ = {
+			isa = PBXGroup;
+			children = (
+				18C528B1236223910034C02A /* HeaderUserDetailsTable.xib */,
+			);
+			path = HeaderUserDetailsTable;
 			sourceTree = "<group>";
 		};
 		18D9B3E6235E35CC00246A1F /* Constants */ = {
@@ -340,6 +350,7 @@
 			children = (
 				18EA543F23534B8E00279357 /* UserDetailsController.swift */,
 				1884E244235F2ED60053033D /* UserDetailsPresenter.swift */,
+				18C528AB236202040034C02A /* UserDetailsCell */,
 			);
 			path = UserDetails;
 			sourceTree = "<group>";
@@ -424,11 +435,12 @@
 				18D41A20235A41C7003DF3EC /* UserDetails.storyboard in Resources */,
 				18D5FAF2235A424C00BCCD5C /* Commons.storyboard in Resources */,
 				18A6FBED234B1D6400D1D193 /* LaunchScreen.storyboard in Resources */,
+				18C528B2236223910034C02A /* HeaderUserDetailsTable.xib in Resources */,
 				18FE25CE234B69EF006D8FC3 /* RadioButtonCell.xib in Resources */,
 				18DBE272234B2DB900EB1313 /* TextFieldCell.xib in Resources */,
 				18A6FBEA234B1D6400D1D193 /* Assets.xcassets in Resources */,
 				18A6FBE8234B1D6300D1D193 /* Main.storyboard in Resources */,
-				18C528AF2362023B0034C02A /* DisplayerCell.xib in Resources */,
+				18C528AF2362023B0034C02A /* UserDetailsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187D0CE92365DC7C00C1401F /* UserDetailsCell.swift in Sources */,
 				18D5FAF6235A4E8200BCCD5C /* DateFormat.swift in Sources */,
 				1884E247235F2F020053033D /* RegistrationPresenter.swift in Sources */,
 				18727B52234DB17F0030EBFF /* FormCellType.swift in Sources */,
@@ -508,7 +521,6 @@
 				18C528AA2361F6030034C02A /* DataDisplayer.swift in Sources */,
 				18A39B6623549B6C00BDD599 /* ListDataSource.swift in Sources */,
 				1859AAFC235B88C700724972 /* FormCellProvider.swift in Sources */,
-				18C528AE2362023B0034C02A /* DisplayerCell.swift in Sources */,
 				18D9B3F1235E681C00246A1F /* StoryboardIdentifiable.swift in Sources */,
 				18ADF16223549F5E004A851D /* UITableView.swift in Sources */,
 				18727B58234DEF9F0030EBFF /* RegistrationCell.swift in Sources */,

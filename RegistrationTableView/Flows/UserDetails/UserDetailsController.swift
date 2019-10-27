@@ -14,20 +14,15 @@ final class UserDetailsController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
    
     //MARK: Properties
-    var userInformations: RegistrationForm?
-    var presenter: UserDetailsPresenter!
-    var items = [DataDisplayer]()
-    
+    var presenter: UserDetailsPresenterInput!
+
     
     //MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = UserDetailsPresenter(view: self)
-        configureUserInfo()
         configTableView()
-        
-        
+        presenter.viewDidLoad()
     }
     
 }
@@ -39,39 +34,40 @@ private extension UserDetailsController {
     func configTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(DisplayerCell.self)
+        tableView.register(UserDetailsCell.self)
+        let view = UINib(nibName: "HeaderUserDetailsTable", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
+        tableView.tableHeaderView = view
     }
     
-    func configureUserInfo() {
-       guard let item = userInformations?.items else {return}
-       for index in 0..<item.count {
-           items.append(DataDisplayer(title: item[index].type.title, value: item[index].value))
-       }
-    }
 }
 
+//MARK: - UserDetailsPresentation
 
 extension UserDetailsController: UserDetailsPresentation {
+    func showAlertMessage(string: String) {
+        let alert = UIAlertController(title: "Alert", message: string, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Click", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
-    
+    func reloadData() {
+        tableView.reloadData()
+    }
 }
 
+//MARK: - UITableView
+
 extension UserDetailsController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return presenter.numberOfRowsInSection
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: DisplayerCell = tableView.dequeue(cellClass: DisplayerCell.self, forIndexPath: indexPath)
-        cell.title.text = items[indexPath.row].title
-        cell.value.text = items[indexPath.row].value
+        let cell: UserDetailsCell = tableView.dequeue(cellClass: UserDetailsCell.self, forIndexPath: indexPath)
+        presenter.fillCell(cell: cell, itemIndex: indexPath.row)
         return cell
     }
-    
-    
-    
-    
-    
     
     
 }

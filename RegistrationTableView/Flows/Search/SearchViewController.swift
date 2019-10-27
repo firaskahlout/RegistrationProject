@@ -15,7 +15,7 @@ final class SearchViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     //MARK: - properties
-    typealias SenectedCountry = (String) -> Void
+    
     weak var delegate: SearchCountryDelegate?
     private var dataSource: ListDataSource? {
       didSet {
@@ -23,32 +23,19 @@ final class SearchViewController: UIViewController {
         tableView.reloadData()
       }
     }
-    var selectedCountry = ""
-    private var countries = [ItemSelector]()
-    private var filteredTableData: [ItemSelector]!
+    
     var presenter: SearchPresenter!
     
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SearchPresenter(view: self)
+        
         setupDelegates()
-        setupSelectedCountry()
+        
         setupTableDataSource()
     }
     
-}
-
-//MARK: - ACTIONS
-extension SearchViewController {
-  
-    func setCountries(countries: [String]) {
-        for item in countries {
-            self.countries.append(ItemSelector(title: item))
-        }
-    }
-  
 }
 
 //MARK: - Configerations
@@ -62,21 +49,9 @@ private extension SearchViewController {
     }
     
     func setupTableDataSource() {
-        filteredTableData = countries
-        dataSource = ListDataSource(cells: filteredTableData)
+        dataSource = ListDataSource(cells: presenter.getFilteredData())
     }
     
-    func setupSelectedCountry() {
-        for index in 0..<countries.count {
-            if countries[index].title == selectedCountry {
-                countries[index].isSelected = true
-                let x = countries[index]
-                countries[index] = countries[0]
-                countries[0] = x
-                break
-            }
-        }
-    }
     
 }
 
@@ -85,7 +60,7 @@ private extension SearchViewController {
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let string = filteredTableData[indexPath.row].title
+        let string = presenter.getFilteredData(at: indexPath.row).title
         delegate?.setSelectedCountry(string: string)
         dismiss(animated: true, completion: nil)
     }
@@ -96,10 +71,10 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = searchText.isEmpty ? countries: countries.filter {
+        presenter.setFilteredData(entry: searchText.isEmpty ? presenter.getCountry(): presenter.getCountry().filter {
             $0.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        dataSource = ListDataSource(cells: filteredTableData)
+        })
+        dataSource = ListDataSource(cells: presenter.getFilteredData())
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -108,9 +83,4 @@ extension SearchViewController: UISearchBarDelegate {
     
 }
 
-extension SearchViewController: SearchPresentation {
-    
-    
-    
-    
-}
+extension SearchViewController: SearchPresentation {}

@@ -56,9 +56,7 @@ private extension RegistrationViewController {
     
     func displaySearch() {/////////////
         let searchView = SearchViewController.instantiate(of: .commons)
-        let country = presenter.form.country
-        searchView.selectedCountry = country.value
-        searchView.setCountries(countries: country.type.pickerData)
+        searchView.presenter = SearchPresenter(view: searchView, countries: presenter.form.country)
         searchView.delegate = self
         present(searchView, animated: true, completion: nil)
     }
@@ -71,7 +69,7 @@ private extension RegistrationViewController {
     
     func presentUserDetailsView() {
         let userDetails = UserDetailsController.instantiate(of: .userDetails)
-        userDetails.userInformations = presenter.form
+        userDetails.presenter = UserDetailsPresenter(view: userDetails, userInformations: presenter.form)
         present(userDetails, animated: true, completion: nil)
     }
 
