@@ -9,13 +9,15 @@
 import UIKit
 
 final class UserDetailsController: UIViewController {
-
+    
     // MARK: Outlets
-    @IBOutlet private weak var tableView: UITableView!
-   
+    @IBOutlet private weak var tableView: UITableView!{
+        didSet{ tableView.tableFooterView = UIView(frame: .zero) }
+    }
+    
     //MARK: Properties
     var presenter: UserDetailsPresenterInput!
-
+    
     
     //MARK: LifeCycle
     
@@ -35,7 +37,7 @@ private extension UserDetailsController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UserDetailsCell.self)
-        let view = UINib(nibName: "HeaderUserDetailsTable", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
+        let view = UINib().getNib(nibName: .headerUserDetailsTable)
         tableView.tableHeaderView = view
     }
     
@@ -44,11 +46,6 @@ private extension UserDetailsController {
 //MARK: - UserDetailsPresentation
 
 extension UserDetailsController: UserDetailsPresentation {
-    func showAlertMessage(string: String) {
-        let alert = UIAlertController(title: "Alert", message: string, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Click", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
     
     func reloadData() {
         tableView.reloadData()

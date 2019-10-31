@@ -10,5 +10,5 @@ import UIKit
 
 protocol CellPresentable: UITableViewCell {
     
-    func display(item: Item)
+    func display(item: CellModel)
 }

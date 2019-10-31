@@ -43,57 +43,43 @@ private extension RegistrationViewController {
         tableView.register(RadioButtonCell.self)
     }
     
-    func configureDataSource() {////////////////
+    func configureDataSource() {
         dataSource = ListDataSource(items: presenter.form.items)
-        presenter.form.country.handler = { [weak self] in self?.displaySearch() }
+        presenter.DataSourceHandler()
+        
     }
-    
 }
 
 // MARK: - Actions
 
 private extension RegistrationViewController {
     
-    func displaySearch() {/////////////
-        let searchView = SearchViewController.instantiate(of: .commons)
-        searchView.presenter = SearchPresenter(view: searchView, countries: presenter.form.country)
-        searchView.delegate = self
-        present(searchView, animated: true, completion: nil)
-    }
-    
     @IBAction func doneClicked(_ sender: Any) {
-        tableView.reloadData()
-        guard presenter.form.validateItems() else { return }
-        presentUserDetailsView()
+        presenter.validateData()
     }
     
-    func presentUserDetailsView() {
-        let userDetails = UserDetailsController.instantiate(of: .userDetails)
-        userDetails.presenter = UserDetailsPresenter(view: userDetails, userInformations: presenter.form)
-        present(userDetails, animated: true, completion: nil)
-    }
 
 }
-
-// MARK: - SearchCountryDelegate
-
-extension RegistrationViewController: SearchCountryDelegate {
-    
-    func setSelectedCountry(string: String) {
-        presenter.form.country.value = string
-        tableView.reloadData()
-    }
-    
-}
-
 
 extension RegistrationViewController: RegistrationPresentation {
     
-    func reloadTableViewData() {
+    func reloadData() {
         tableView.reloadData()
     }
     
+    func displaySearch() {
+        let searchView = Assembly.searchView(country: presenter.form.country)
+        searchView.delegate = presenter
+        let nav = UINavigationController()
+//        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        nav.navigationBar.shadowImage = UIImage()
+        nav.addChild(searchView)
+        present(nav, animated: true, completion: nil)
+    }
     
-    
+    func presentUserDetailsView() {
+        let userDetails = Assembly.detailsView(info: presenter.form)
+        present(userDetails, animated: true, completion: nil)
+    }
     
 }

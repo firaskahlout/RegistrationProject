@@ -44,11 +44,14 @@ final class RadioButtonCell: UITableViewCell {
 //MARK: - CellPresentable
 extension RadioButtonCell: CellPresentable {
     
-    func display(item: Item) {
-        self.item = item
+    func display(item: CellModel) {
+        if let item = item as? Item {
+            self.item = item
+            
+            titleLabel.textColor = item.labelColor
+            configGenderCell(item)
+        }
         
-        titleLabel.textColor = item.labelColor
-        configGenderCell(item)
     }
     
 }

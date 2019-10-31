@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Item: NSObject {
+class Item: CellModel {
     
     // MARK: - Properties
     var value: String

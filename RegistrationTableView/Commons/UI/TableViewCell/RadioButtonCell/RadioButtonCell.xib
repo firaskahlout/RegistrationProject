@@ -41,7 +41,6 @@
                                                                 <subviews>
                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3u-kW-vgM">
                                                                         <rect key="frame" x="2" y="2" width="12" height="12"/>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="12" id="h2C-eA-cL8"/>
                                                                             <constraint firstAttribute="width" constant="12" id="moh-cI-GqT"/>
@@ -57,7 +56,6 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="3i5-hl-1Mz"/>
                                                             <constraint firstItem="w3w-Y5-O2l" firstAttribute="centerX" secondItem="aZy-ol-oZr" secondAttribute="centerX" id="NdB-hr-6g5"/>
@@ -95,7 +93,6 @@
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="16" id="3nQ-Yc-d2c"/>
                                                                     <constraint firstItem="u1o-HO-EEE" firstAttribute="centerX" secondItem="ALJ-e3-N7k" secondAttribute="centerX" id="7zf-lB-Zpp"/>
@@ -104,7 +101,6 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="GsX-EU-fjC"/>
                                                             <constraint firstItem="ALJ-e3-N7k" firstAttribute="centerX" secondItem="NwM-1w-4bI" secondAttribute="centerX" id="kGa-Oh-o90"/>
@@ -127,7 +123,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="QsI-W6-wwX" secondAttribute="trailing" constant="24" id="A2o-OC-dFR"/>
                                     <constraint firstItem="QsI-W6-wwX" firstAttribute="top" secondItem="ZkN-bN-kyw" secondAttribute="top" constant="8" id="TbP-tG-inY"/>
@@ -152,7 +147,7 @@
                 <outlet property="maleRadioSuperView" destination="ALJ-e3-N7k" id="f6F-GD-ho6"/>
                 <outlet property="titleLabel" destination="BOT-2O-9AT" id="bSg-ir-tIh"/>
             </connections>
-            <point key="canvasLocation" x="-257.24637681159425" y="-25.446428571428569"/>
+            <point key="canvasLocation" x="86" y="52"/>
         </tableViewCell>
     </objects>
 </document>

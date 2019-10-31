@@ -57,21 +57,24 @@ private extension TextFieldCell {
 
 //MARK: - CellPresentable
 extension TextFieldCell: CellPresentable {
-    func display(item: Item) {
-        self.item = item
-        type = item.type as? RegistrationCell
-        titleLabel.textColor = item.labelColor
-        
-        setUpTextFieldCell(item)
-        
-        if type == .country {
-            textField.text = item.value
-        }else if type == .intrest {
-            dataSource = PickerDataSource(items: type.pickerData)
-            textField.inputView = picker
-        }else if type == .date {
-            configDateField()
+    func display(item: CellModel) {
+        if let item = item as? Item {
+            self.item = item
+            type = item.type as? RegistrationCell
+            titleLabel.textColor = item.labelColor
+            
+            setUpTextFieldCell(item)
+            
+            if type == .country {
+                textField.text = item.value
+            }else if type == .intrest {
+                dataSource = PickerDataSource(items: type.pickerData)
+                textField.inputView = picker
+            }else if type == .date {
+                configDateField()
+            }
         }
+        
     }
 }
 

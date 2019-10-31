@@ -37,7 +37,7 @@ final class UserDetailsCell: UITableViewCell {
 // MARK: - DisplayerPresentation
 
 extension UserDetailsCell: UserDetailsCellPresentation {
-    func configWithItem(item: DataDisplayer, index: Int) {
+    func configure(with item: UserDetailsCellData, index: Int) {
         title.text = item.title
         value.text = item.value
         self.index = index

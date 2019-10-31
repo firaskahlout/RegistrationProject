@@ -16,17 +16,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="432" height="92"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="R2z-hM-UYU">
-                        <rect key="frame" x="20" y="15" width="55.5" height="62"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R2z-hM-UYU">
+                        <rect key="frame" x="20" y="8" width="55.5" height="76"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPb-vV-AcM">
-                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="29.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="47.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="wefewf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-fW-exo">
-                                <rect key="frame" x="0.0" y="41.5" width="55.5" height="20.5"/>
+                                <rect key="frame" x="0.0" y="55.5" width="55.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,11 +41,11 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="R2z-hM-UYU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="3Ul-Jj-oV3"/>
+                    <constraint firstItem="R2z-hM-UYU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="3Ul-Jj-oV3"/>
                     <constraint firstItem="R2z-hM-UYU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Glj-y6-m3R"/>
                     <constraint firstItem="Rb6-Ff-Iw3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QtQ-nj-a2S"/>
                     <constraint firstAttribute="trailing" secondItem="Rb6-Ff-Iw3" secondAttribute="trailing" constant="25" id="RQY-9S-0dQ"/>
-                    <constraint firstAttribute="bottom" secondItem="R2z-hM-UYU" secondAttribute="bottom" constant="15" id="iFB-Zn-xCH"/>
+                    <constraint firstAttribute="bottom" secondItem="R2z-hM-UYU" secondAttribute="bottom" constant="8" id="iFB-Zn-xCH"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -53,7 +53,7 @@
                 <outlet property="title" destination="rPb-vV-AcM" id="0Ar-7t-fVg"/>
                 <outlet property="value" destination="b6D-fW-exo" id="gkr-J7-j04"/>
             </connections>
-            <point key="canvasLocation" x="31.884057971014496" y="-52.232142857142854"/>
+            <point key="canvasLocation" x="-159" y="-2"/>
         </tableViewCell>
     </objects>
 </document>

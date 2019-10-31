@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ItemSelector: NSObject {
+class ItemSelector: CellModel {
     
     // MARK: - Properties
     var title: String

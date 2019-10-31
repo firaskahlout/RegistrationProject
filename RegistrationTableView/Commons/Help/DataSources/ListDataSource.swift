@@ -69,3 +69,9 @@ extension ListDataSource: UITableViewDataSource {
     }
     
 }
+
+
+
+protocol CellPresenter {
+    func fill()
+}

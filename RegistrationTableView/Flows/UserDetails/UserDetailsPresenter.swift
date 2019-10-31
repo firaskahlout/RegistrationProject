@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol UserDetailsPresentation: class {
+protocol UserDetailsPresentation: BasePresentation {
     func reloadData()
-    func showAlertMessage(string: String)
 }
 protocol UserDetailsCellPresentation: class {
-    func configWithItem(item: DataDisplayer, index: Int)
     var handler: (() -> Void)? { get set }
+    func configure(with item: UserDetailsCellData, index: Int)
+
 }
 protocol UserDetailsPresenterInput: class {
     init(view: UserDetailsPresentation, userInformations: RegistrationForm)
@@ -28,7 +28,7 @@ final class UserDetailsPresenter {
     
     private weak var view: UserDetailsPresentation?
     private weak var cell: UserDetailsCellPresentation?
-    private var items = [DataDisplayer]()
+    private var items = [UserDetailsCellData]()
     private var userInformations: RegistrationForm!
     
     init(view: UserDetailsPresentation, userInformations: RegistrationForm) {
@@ -43,7 +43,7 @@ final class UserDetailsPresenter {
 extension UserDetailsPresenter: UserDetailsPresenterInput {
     
     func showAlertMessage(string: String) {
-        view?.showAlertMessage(string: string)
+        view?.presentAlert(message: string)
     }
     
     func viewDidLoad() {
@@ -56,7 +56,7 @@ extension UserDetailsPresenter: UserDetailsPresenterInput {
     
     func fillCell(cell: UserDetailsCellPresentation, itemIndex: Int) {
         self.cell = cell
-        cell.configWithItem(item: items[itemIndex], index: itemIndex)
+        cell.configure(with: items[itemIndex], index: itemIndex)
         cell.handler = { [weak self] in self?.showAlertMessage(string: "\(itemIndex)") }
 
     }
@@ -68,7 +68,7 @@ extension UserDetailsPresenter {
     
     private func setupData(userInformations: RegistrationForm) {
         
-        items = userInformations.items.map { DataDisplayer(title: $0.type.title, value: $0.value)}
+        items = userInformations.items.map { UserDetailsCellData(title: $0.type.title, value: $0.value)}
         view?.reloadData()
     }
      

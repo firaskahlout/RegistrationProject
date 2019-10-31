@@ -34,23 +34,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vmp-v0-e0x">
-                                <rect key="frame" x="0.0" y="140" width="414" height="638"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsP-kY-QUu">
-                                <rect key="frame" x="82" y="790" width="250" height="60"/>
+                                <rect key="frame" x="107" y="795" width="200" height="55"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="7Ui-f6-3LR"/>
-                                    <constraint firstAttribute="height" constant="60" id="P9V-P8-co7"/>
+                                    <constraint firstAttribute="width" constant="200" id="7Ui-f6-3LR"/>
+                                    <constraint firstAttribute="height" constant="55" id="P9V-P8-co7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="Done">
+                                <state key="normal" title="Register">
                                     <color key="titleColor" red="0.92158097029999997" green="0.92154628039999997" blue="0.92156976459999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="12"/>
+                                        <integer key="value" value="27"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -58,7 +58,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Vmp-v0-e0x" firstAttribute="top" secondItem="QCR-4x-05s" secondAttribute="top" id="2HD-Th-wAz"/>
                             <constraint firstItem="Vmp-v0-e0x" firstAttribute="leading" secondItem="QCR-4x-05s" secondAttribute="leading" id="9BA-al-vIM"/>

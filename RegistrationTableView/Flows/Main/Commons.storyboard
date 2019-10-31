@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="yIe-wm-rYi">
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" id="HXn-j4-yVy" customClass="SearchViewController" customModule="RegistrationTableView" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xwp-3g-AgK">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-gV-l9u">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -40,7 +40,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="18v-kc-i2k"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UHo-vC-ZVo"/>
+                    <navigationItem key="navigationItem" title="Search" id="UHo-vC-ZVo"/>
                     <connections>
                         <outlet property="searchBar" destination="V2s-gV-l9u" id="Jbb-Qd-pEv"/>
                         <outlet property="tableView" destination="Xwp-3g-AgK" id="nf9-7n-0WR"/>
@@ -48,7 +48,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="beB-nw-x3C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834.7826086956522" y="147.99107142857142"/>
+            <point key="canvasLocation" x="3115.9420289855075" y="136.60714285714286"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j34-Tc-JVo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0jt-ZP-gfo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tVA-Jj-gNc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HXn-j4-yVy" kind="relationship" relationship="rootViewController" id="UdP-ZB-igO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X3p-2D-nJZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2205.7971014492755" y="136.60714285714286"/>
         </scene>
     </scenes>
 </document>

@@ -12,7 +12,9 @@ final class SearchViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet { tableView.tableFooterView = UIView(frame: .zero) }
+    }
     
     //MARK: - properties
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DataDisplayer {
+class UserDetailsCellData {
       
     // MARK: - Properties
     var title: String

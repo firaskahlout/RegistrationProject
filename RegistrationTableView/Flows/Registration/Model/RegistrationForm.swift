@@ -25,6 +25,18 @@ final class RegistrationForm {
     }
     
     func validateItems() -> Bool {
-        return true
+//        return true
+        var isSuccess = true
+        
+        for item in items {
+            let isValid = item.value.isValid(item.validationType)
+            if isValid {
+                item.labelColor = .green
+            }else{
+                item.labelColor = .lightRed
+                isSuccess = isValid
+            }
+        }
+        return isSuccess
     }
 }
