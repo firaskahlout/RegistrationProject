@@ -23,6 +23,7 @@
 		1884E243235F2EA70053033D /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E242235F2EA70053033D /* SearchPresenter.swift */; };
 		1884E245235F2ED60053033D /* UserDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E244235F2ED60053033D /* UserDetailsPresenter.swift */; };
 		1884E247235F2F020053033D /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E246235F2F020053033D /* RegistrationPresenter.swift */; };
+		188B158723705A9C009A6249 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B158623705A9C009A6249 /* TableViewCell.xib */; };
 		189556BF235768E0003A0AAC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189556BE235768E0003A0AAC /* String.swift */; };
 		189E7A04236736F60008A0DB /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E7A03236736F60008A0DB /* Nib.swift */; };
 		189E7A06236738110008A0DB /* UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E7A05236738110008A0DB /* UINib.swift */; };
@@ -73,6 +74,7 @@
 		1884E242235F2EA70053033D /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		1884E244235F2ED60053033D /* UserDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsPresenter.swift; sourceTree = "<group>"; };
 		1884E246235F2F020053033D /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		188B158623705A9C009A6249 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		189556BE235768E0003A0AAC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		189E7A03236736F60008A0DB /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		189E7A05236738110008A0DB /* UINib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINib.swift; sourceTree = "<group>"; };
@@ -142,7 +144,7 @@
 			children = (
 				18D9B3E8235E36B600246A1F /* TextFieldCell */,
 				18D9B3E9235E36C800246A1F /* RadioButtonCell */,
-				185C13A8236AE4DF00EDC670 /* TableViewCell.swift */,
+				188B158823705AC5009A6249 /* TableViewCell */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -213,6 +215,15 @@
 				1889D9B823526A9E00A2FC06 /* Model */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		188B158823705AC5009A6249 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				185C13A8236AE4DF00EDC670 /* TableViewCell.swift */,
+				188B158623705A9C009A6249 /* TableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		189556B423575AFA003A0AAC /* Help */ = {
@@ -467,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D41A20235A41C7003DF3EC /* UserDetails.storyboard in Resources */,
+				188B158723705A9C009A6249 /* TableViewCell.xib in Resources */,
 				18D5FAF2235A424C00BCCD5C /* Commons.storyboard in Resources */,
 				18A6FBED234B1D6400D1D193 /* LaunchScreen.storyboard in Resources */,
 				18C528B2236223910034C02A /* HeaderUserDetailsTable.xib in Resources */,

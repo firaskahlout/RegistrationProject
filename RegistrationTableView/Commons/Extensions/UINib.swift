@@ -10,7 +10,7 @@ import UIKit
 
 extension UINib {
     
-    func getNib(nibName: Nib) -> UIView{
+    static func load(nibName: Nib) -> UIView{
         return UINib(nibName: Nib.headerUserDetailsTable.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }
     

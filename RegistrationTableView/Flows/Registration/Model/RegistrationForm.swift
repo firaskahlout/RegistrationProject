@@ -18,17 +18,19 @@ final class RegistrationForm {
     let gender = Item(type: RegistrationCell.gender)
     let date = Item(type: RegistrationCell.date)
     let country = Item(type: RegistrationCell.country)
-    let intrest = Item(type: RegistrationCell.intrest)
+    let intrest = Item(type: RegistrationCell.intrest, isRequired: false)
     
     var items: [Item] {
         return [name, email, password, confirmPassword, gender, date, country, intrest]
     }
     
+    //MARK: Actions
+    
     func validateItems() -> Bool {
-//        return true
         var isSuccess = true
         
         for item in items {
+            if !item.isRequired { continue }
             let isValid = item.value.isValid(item.validationType)
             if isValid {
                 item.labelColor = .green
@@ -36,6 +38,10 @@ final class RegistrationForm {
                 item.labelColor = .lightRed
                 isSuccess = isValid
             }
+        }
+        if confirmPassword.value != password.value {
+            confirmPassword.labelColor = .lightRed
+            isSuccess = false
         }
         return isSuccess
     }

@@ -29,7 +29,7 @@ final class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         presenter = RegistrationPresenter(view: self)
         configureTableView()
-        configureDataSource()
+        presenter.viewDidLoad()
         IQKeyboardManager.shared.enable = true 
     }
 }
@@ -43,11 +43,6 @@ private extension RegistrationViewController {
         tableView.register(RadioButtonCell.self)
     }
     
-    func configureDataSource() {
-        dataSource = ListDataSource(items: presenter.form.items)
-        presenter.DataSourceHandler()
-        
-    }
 }
 
 // MARK: - Actions
@@ -57,28 +52,30 @@ private extension RegistrationViewController {
     @IBAction func doneClicked(_ sender: Any) {
         presenter.validateData()
     }
-    
 
 }
 
+//MARK: - RegistrationPresentation
+
 extension RegistrationViewController: RegistrationPresentation {
+    
+    func configureDataSource(items: [Item]) {
+        dataSource = ListDataSource(items: items)
+    }
     
     func reloadData() {
         tableView.reloadData()
     }
     
-    func displaySearch() {
-        let searchView = Assembly.searchView(country: presenter.form.country)
-        searchView.delegate = presenter
-        let nav = UINavigationController()
-//        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        nav.navigationBar.shadowImage = UIImage()
-        nav.addChild(searchView)
+    func displaySearch(country: Item) {
+        let searchView = Assembly.searchView(country: country)
+        searchView.presenter.delegate = presenter
+        let nav = UINavigationController(rootViewController: searchView)
         present(nav, animated: true, completion: nil)
     }
     
-    func presentUserDetailsView() {
-        let userDetails = Assembly.detailsView(info: presenter.form)
+    func presentUserDetailsView(form: RegistrationForm) {
+        let userDetails = Assembly.detailsView(info: form)
         present(userDetails, animated: true, completion: nil)
     }
     

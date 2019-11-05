@@ -37,7 +37,7 @@ private extension UserDetailsController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UserDetailsCell.self)
-        let view = UINib().getNib(nibName: .headerUserDetailsTable)
+        let view = UINib.load(nibName: .headerUserDetailsTable)
         tableView.tableHeaderView = view
     }
     

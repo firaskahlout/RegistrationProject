@@ -17,20 +17,22 @@ protocol UserDetailsCellPresentation: class {
 
 }
 protocol UserDetailsPresenterInput: class {
+    var numberOfRowsInSection: Int { get }
     init(view: UserDetailsPresentation, userInformations: RegistrationForm)
     func viewDidLoad()
     func fillCell(cell: UserDetailsCellPresentation, itemIndex: Int)
     func showAlertMessage(string: String)
-    var numberOfRowsInSection: Int { get }
 }
 
 final class UserDetailsPresenter {
     
+    //MARK: - properties
     private weak var view: UserDetailsPresentation?
     private weak var cell: UserDetailsCellPresentation?
     private var items = [UserDetailsCellData]()
     private var userInformations: RegistrationForm!
     
+    //MARK: - Initalizer
     init(view: UserDetailsPresentation, userInformations: RegistrationForm) {
         self.view = view
         self.userInformations = userInformations

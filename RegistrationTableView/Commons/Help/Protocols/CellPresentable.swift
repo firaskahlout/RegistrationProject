@@ -9,6 +9,5 @@
 import UIKit
 
 protocol CellPresentable: UITableViewCell {
-    
     func display(item: CellModel)
 }

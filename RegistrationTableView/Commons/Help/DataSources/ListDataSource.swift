@@ -10,7 +10,6 @@ import UIKit
 final class ListDataSource: NSObject {
     
     // MARK: - Properties
-    
     private let items: [Item]?
     private let cells: [ItemSelector]?
     
@@ -68,10 +67,4 @@ extension ListDataSource: UITableViewDataSource {
         return UITableViewCell()
     }
     
-}
-
-
-
-protocol CellPresenter {
-    func fill()
 }

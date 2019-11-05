@@ -74,7 +74,6 @@ extension TextFieldCell: CellPresentable {
                 configDateField()
             }
         }
-        
     }
 }
 

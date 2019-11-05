@@ -10,7 +10,7 @@ import UIKit
 
 final class UserDetailsCell: UITableViewCell {
 
-    //MARK: Propareties
+    //MARK: Outlets
     @IBOutlet private weak var title: UILabel!
     @IBOutlet private weak var value: UILabel!
     
@@ -18,17 +18,10 @@ final class UserDetailsCell: UITableViewCell {
     var handler: (() -> Void)?
     private var index = -1
     
-    
-    override func awakeFromNib() {
-//        presenter = UserDetailsPresenter(cell: self)
-    }
-    
-    
     //MARK: Actions
     
     @IBAction private func SideButton(_ sender: Any) {
         print(index)
-//        presenter.showAlertMessage(string: "the cell index is: \(index)")
         handler?()
     }
     

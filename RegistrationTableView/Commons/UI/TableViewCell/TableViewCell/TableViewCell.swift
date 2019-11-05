@@ -10,8 +10,9 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-
 }
+
+//MARK: - CellPresentable
 extension TableViewCell: CellPresentable {
     
     func display(item: CellModel) {

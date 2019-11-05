@@ -15,14 +15,15 @@ class Item: CellModel {
     let type: FormCellProvider
     let validationType: RegEx
     var labelColor: UIColor
-    
+    let isRequired: Bool
     var handler: (() -> Void)?
     
     // MARK: - Initalizer
-    init(type: FormCellProvider, value: String = "", validationType: RegEx = .none, labelColor: UIColor = .gray) {
+    init(type: FormCellProvider, value: String = "", validationType: RegEx = .none, labelColor: UIColor = .gray, isRequired: Bool = true) {
         self.type = type
         self.value = value
         self.validationType = validationType
         self.labelColor = labelColor
+        self.isRequired = isRequired
     }
 }

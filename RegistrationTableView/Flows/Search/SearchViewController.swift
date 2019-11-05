@@ -18,7 +18,6 @@ final class SearchViewController: UIViewController {
     
     //MARK: - properties
     
-    weak var delegate: SearchCountryDelegate?
     private var dataSource: ListDataSource? {
       didSet {
         tableView.dataSource = dataSource
@@ -26,16 +25,15 @@ final class SearchViewController: UIViewController {
       }
     }
     
-    var presenter: SearchPresenter!
+    var presenter: SearchPresenterInput!
     
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter.viewDidLoad()
         setupDelegates()
         
-        setupTableDataSource()
     }
     
 }
@@ -50,11 +48,6 @@ private extension SearchViewController {
         searchBar.becomeFirstResponder()
     }
     
-    func setupTableDataSource() {
-        dataSource = ListDataSource(cells: presenter.getFilteredData())
-    }
-    
-    
 }
 
 //MARK: - TableViewDelegate
@@ -62,9 +55,7 @@ private extension SearchViewController {
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let string = presenter.getFilteredData(at: indexPath.row).title
-        delegate?.setSelectedCountry(string: string)
-        dismiss(animated: true, completion: nil)
+        presenter.didSelectRowAt(index: indexPath.row)
     }
 }
 
@@ -73,10 +64,8 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter.setFilteredData(entry: searchText.isEmpty ? presenter.getCountry(): presenter.getCountry().filter {
-            $0.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        })
-        dataSource = ListDataSource(cells: presenter.getFilteredData())
+        presenter.filterData(string: searchText)
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -85,4 +74,12 @@ extension SearchViewController: UISearchBarDelegate {
     
 }
 
-extension SearchViewController: SearchPresentation {}
+extension SearchViewController: SearchPresentation {
+    func dismiss() {
+        dismiss(animated: true)
+    }
+    
+    func setupTableDataSource(data: [ItemSelector]) {
+        dataSource = ListDataSource(cells: data)
+    }
+}

@@ -9,86 +9,70 @@
 import Foundation
 
 protocol SearchPresentation: class {
-   
+    func setupTableDataSource(data: [ItemSelector])
+    func dismiss()
 }
 
 protocol SearchPresenterInput: class {
-    init(view: SearchPresentation, countries: Item)
-    func setFilteredData(entry: [ItemSelector])
-    func getFilteredData(at index: Int) -> ItemSelector
-    func getFilteredData() -> [ItemSelector]
-    func getCountry(at index: Int) -> ItemSelector
-    func getCountry() -> [ItemSelector]
+    var delegate: SearchCountryDelegate? { get set }
+    init(view: SearchPresentation, selectedItem: ItemSelector, items: [ItemSelector])
+    func viewDidLoad()
+    func filterData(string: String)
+    func didSelectRowAt(index: Int)
 }
 
 
 class SearchPresenter {
     
-    private var selectedCountry = ""
-    private var countries = [ItemSelector]()
-    private var filteredData: [ItemSelector]!
+    //MARK: - properties
+    private var selectedItem: ItemSelector
+    private var items = [ItemSelector]()
+    private var filteredData = [ItemSelector]()
     private weak var view: SearchPresentation?
+    weak var delegate: SearchCountryDelegate?
     
-    
-    
-    required init(view: SearchPresentation, countries: Item) {
+    //MARK: - Initalizer
+    required init(view: SearchPresentation, selectedItem: ItemSelector, items: [ItemSelector]) {
         self.view = view
-        self.setCountries(countries: countries.type.pickerData)
-        setupData(countries)
-        
+        self.selectedItem = selectedItem
+        self.items = items
      }
-    
-    
-    
-    
 }
 
 //MARK: - Configrations
 private extension SearchPresenter {
     
-    func setupData(_ countries: Item) {
-        selectedCountry = countries.value
+    func setupData() {
         setupSelectedCountry()
-        filteredData = self.countries
+        filteredData = items
     }
-    func setCountries(countries: [String]) {
-        for item in countries {
-            self.countries.append(ItemSelector(title: item))
-        }
+    
+    func setupSelectedCountry() {
+        guard let index = items.firstIndex(where: { $0.title == selectedItem.title }) else { return }
+        items[index].isSelected = true
+        items.swapAt(index, 0)
     }
 }
 
 //MARK: - SearchPresenterInput
 
 extension SearchPresenter: SearchPresenterInput {
-    func getCountry(at index: Int) -> ItemSelector {
-        return countries[index]
+    func didSelectRowAt(index: Int) {
+        let string = filteredData[index].title
+        delegate?.setSelectedCountry(string: string)
+        view?.dismiss()
     }
     
-    func getCountry() -> [ItemSelector] {
-        return countries
+    func viewDidLoad() {
+        setupData()
+        view?.setupTableDataSource(data: filteredData)
     }
     
-    
-    func setFilteredData(entry: [ItemSelector]) {
-        filteredData = entry
-    }
-    func getFilteredData(at index: Int) -> ItemSelector {
-        return filteredData[index]
-    }
-    func getFilteredData() -> [ItemSelector] {
-        return filteredData
-    }
-    
-    private func setupSelectedCountry() {
-        for index in 0..<countries.count {
-            if countries[index].title == selectedCountry {
-                countries[index].isSelected = true
-                let x = countries[index]
-                countries[index] = countries[0]
-                countries[0] = x
-                break
-            }
+    func filterData(string: String) {
+        filteredData = string.isEmpty ? items: items.filter {
+            $0.title.range(of: string, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
+        view?.setupTableDataSource(data: filteredData)
     }
+    
 }

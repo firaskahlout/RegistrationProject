@@ -9,43 +9,56 @@
 import Foundation
 
 protocol RegistrationPresentation: class {
-    func displaySearch()
-    func presentUserDetailsView()
+    func displaySearch(country: Item)
+    func presentUserDetailsView(form: RegistrationForm)
+    func configureDataSource(items: [Item])
     func reloadData()
 }
 
 protocol RegistrationPresenterInput {
-   
-    func DataSourceHandler()
-   
-    
+    func viewDidLoad()
 }
 
 final class RegistrationPresenter {
     
+    //MARK: - properties
     private weak var view: RegistrationPresentation?
-    let form = RegistrationForm()
+    private let form = RegistrationForm()
     
+    //MARK: - Initalizer
     init(view: RegistrationPresentation) {
         self.view = view
     }
    
-    
 }
 
+// MARK: - RegistrationPresenterInput
+
 extension RegistrationPresenter: RegistrationPresenterInput {
-    func DataSourceHandler() {
-        form.country.handler = { [weak self] in self!.view?.displaySearch() }
-        
+    
+    func viewDidLoad() {
+        setupDataSourceHandler()
+        view?.configureDataSource(items: form.items)
     }
+    
     func validateData() {
         view?.reloadData()
         guard form.validateItems() else { return }
-        view?.presentUserDetailsView()
+        view?.presentUserDetailsView(form: form)
     }
-    
 }
 
+// MARK: - Configurations
+
+private extension RegistrationPresenter {
+    func setupDataSourceHandler() {
+        form.country.handler = { [weak self] in
+            guard let self = self else { return }
+            self.view?.displaySearch(country: self.form.country)
+        }
+        
+    }
+}
 
 // MARK: - SearchCountryDelegate
 
